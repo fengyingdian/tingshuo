@@ -1,0 +1,72 @@
+<!--myComponents/button-home/index.wxml-->
+<view class="comment" data-punchId="{{item.punchId}}" bindtap="onTap" style='width:{{width}}px'>
+  <view class="itemRow4">
+    <view class="w20">
+      <image class="icon-image-usr" src="{{item.image}}"></image>
+    </view>
+    <view class="wl60">
+      <view wx:if="{{item.role=='professor'}}" class="text18"> {{item.name}}-课件老师</view>
+      <view wx:elif="{{item.role=='teacher'}}" class="text18"> {{item.name}}-点评老师</view>
+      <view wx:elif="{{item.role=='monitor'}}" class="text18"> {{item.name}}-班长</view>
+      <view wx:elif="{{item.role=='secretary'}}" class="text18"> {{item.name}}-支书</view>
+      <view wx:elif="{{item.role=='monitorAssistant'}}" class="text18"> {{item.name}}-班助</view>
+      <view wx:elif="{{item.role=='editor'}}" class="text18"> {{item.name}}-编辑</view>
+      <view wx:elif="{{item.role=='teacherAssistant'}}" class="text18"> {{item.name}}-助教</view>
+      <view wx:elif="{{item.role=='backup'}}" class="text18"> {{item.name}}-后台服务</view>
+      <view wx:else class="text18"> {{item.name}}</view>
+      <view class="textGrey18"> {{item.time}} </view>
+    </view>
+    <view class="w20">
+      <view class="text18"> #{{item.index}} </view>
+      <view class="textGrey18"> </view>
+    </view>
+  </view>
+  <view class="itemRow5">
+    <view class="w20">
+      <block wx:if="{{item.classType==1}}">
+        <image class="icon-image-small3" src="/pages/image/button/flaga.png"></image>
+        <view class="textGrey12"> {{item.className}}(美音)#{{item.classNumber}} </view>
+      </block>
+      <block wx:elif="{{item.classType==2}}">
+        <image class="icon-image-small3" src="/pages/image/button/flagb.png"></image>
+        <view class="textGrey12"> {{item.className}}(英音)#{{item.classNumber}} </view>
+      </block>
+      <block wx:else>
+        <image class="icon-image-small3" src="/pages/image/button/noselect.png"></image>
+        <view class="textGrey12"> 未选择班级 </view>
+      </block>
+    </view>
+    <view class="w20">
+      <block wx:if="{{item.TCC==1}}" >
+        <image class="icon-image-small3" src="/pages/image/button/blue.png"></image>
+      </block>
+      <block wx:else>
+        <image class="icon-image-small3" src="/pages/image/button/none.png"></image>
+      </block>
+      <view class="textGrey12"> 老师点评 </view>
+    </view>
+    <view class="w20">
+      <block wx:if="{{item.MOC==1}}" >
+        <image class="icon-image-small3" src="/pages/image/button/green.png"></image>
+      </block>
+      <block wx:else>
+        <image class="icon-image-small3" src="/pages/image/button/none.png"></image>
+      </block>
+      <view class="textGrey12"> 班长点评 </view>
+    </view>
+    <view class="w20">
+      <block wx:if="{{item.MAC==1}}" >
+        <image class="icon-image-small3" src="/pages/image/button/red.png"></image>
+      </block>
+      <block wx:else>
+        <image class="icon-image-small3" src="/pages/image/button/none.png"></image>
+      </block>
+      <view class="textGrey12"> 班助点评 </view>
+    </view>
+    <view class="w20" wx:if="{{item.score!='-1'}}">
+      <text style='font-size:36rpx;font-weight:900;color:{{item.scoreColor}};'> {{item.score}} </text>
+      <view class="textGrey12"> AI测评 </view>
+    </view>
+  </view>
+  <view class="h10"/> 
+</view>

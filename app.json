@@ -1,0 +1,81 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/courseList/courseList",
+    "pages/logs/logs",
+    "pages/home/home",
+    "pages/class/class",
+    "pages/punchClock/punchClock",
+    "pages/recordShow/recordShow",
+    "pages/modifyUsrInfo/modifyUsrInfo",
+    "pages/practice/practice",
+    "pages/punchCard/punchCard",
+    "pages/addClass/addClass",
+    "pages/classInfo/classInfo",
+    "pages/oneClass/oneClass",
+    "pages/pickCourse/pickCourse",
+    "pages/rank/rank",
+    "pages/commentBook/commentBook",
+    "pages/trans/trans",
+    "pages/edit/edit",
+    "pages/applyPosition/applyPosition",
+    "pages/myFlowers/myFlowers",
+    "pages/addClassORcode/addClassORcode",
+    "pages/usrCommentList/usrCommentList",
+    "pages/usrPunchList/usrPunchList",
+    "pages/usrInfo/usrInfo",
+    "pages/chargeFlower/chargeFlower",
+    "pages/myCommentBook/myCommentBook",
+    "pages/man2robot/man2robot",
+    "pages/man2robotPlay/man2robotPlay",
+    "pages/everyday/everyday",
+    "pages/aiReport/aiReport",
+    "pages/punchClock/index"
+  ],
+  "subPackages": [
+    {
+      "root": "packageA",
+      "pages": [
+        "wxGroupInfo/index"
+      ]
+    }
+  ],
+  "plugins": {
+    "calendar": {
+      "version": "1.1.3",
+      "provider": "wx92c68dae5a8bb046"
+    }
+  },
+  "window": {
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "white",
+    "navigationBarTitleText": "听说",
+    "navigationBarTextStyle": "black",
+    "enablePullDownRefresh": true
+  },
+  "tabBar": {
+    "color": "#7F7F7F",
+    "selectedColor": "#22B14c",
+    "borderStyle": "ghostwhite",
+    "list": [
+      {
+        "selectedIconPath": "pages/image/button/course2.png",
+        "iconPath": "pages/image/button/course1.png",
+        "pagePath": "pages/index/index",
+        "text": "首页"
+      },
+      {
+        "selectedIconPath": "pages/image/button/find2.png",
+        "iconPath": "pages/image/button/find1.png",
+        "pagePath": "pages/class/class",
+        "text": "班级"
+      },
+      {
+        "selectedIconPath": "pages/image/button/home2.png",
+        "iconPath": "pages/image/button/home1.png",
+        "pagePath": "pages/home/home",
+        "text": "我的"
+      }
+    ]
+  }
+}

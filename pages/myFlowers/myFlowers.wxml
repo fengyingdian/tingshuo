@@ -1,0 +1,44 @@
+<!--pages/myFlowers/myFlowers.wxml-->
+<view class='w100-white'>
+  <view class="h05"/>
+  <view class='w80'>
+    <view  class="w10-white">
+      <view class="wc100" style='height:40px'>
+        <text class="text30" style='color:rgb(255,127,39);font-size:30px;'>{{sum}}</text>
+        <text class="textGreyFont14" style='padding-left:10px;padding-top:30px'>朵</text>
+      </view>
+    </view>
+    <text class="h20"></text>
+    <block wx:if="{{showflowerList}}">
+      <view class='w100-white' wx:for="{{eventList}}">
+        <view class="itemClass" style='padding-left:5px;padding-right:5px;'>
+          <view class="wl30">
+            <text class='textMid18'>{{item.codeName}}</text>
+          </view>
+          <view class="wl60">
+            <text class="textGreyFont12"> {{item.time}} </text>
+          </view>
+          <view class="wl10">
+            <text class="textMid18"> {{item.count}} </text>
+          </view>
+        </view>
+      </view>
+    </block>
+    <text class="h20"></text>
+    <text class="text20">小红花用途</text>
+    <text class="h10"></text>
+    <text class="textGreyFont14">1. 打赏你喜欢的同学</text>
+    <text class="textGreyFont14">2. 支付预约点评费用</text>
+    <text class="textGreyFont14">3. 支付相关课程费用</text>
+    <text class="h20"></text>
+    <text class="textGreyFont10">点击预览</text>
+    <image class="icon-image-large4" src='https://www.abceea.com/static/others/go_for_dreams_ORcode.jpg' bindtap='tapPreViewORcode'></image>
+    <text class="textGreyFont10">小红花充值请联系后台服务Joooy</text>
+    <text class="h20"></text>
+  </view>
+</view>
+<view class='w100'>
+    <text class="h10"></text>
+    <text class="textGreyFont10">- END -</text>
+    <text class="h10"></text>
+</view>

@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "button-home": "/myComponents/button-home/index",
+    "button-saveImage": "/myComponents/button-saveImage/index"
+  }
+}

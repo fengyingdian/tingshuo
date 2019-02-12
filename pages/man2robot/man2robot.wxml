@@ -1,0 +1,48 @@
+<!--pages/man2robot/man2robot.wxml-->
+<block wx:if="{{showPage}}">
+  <view style='padding:0 30px 0 30px;background:white'>
+    <view class='h10' style='background:white'></view>
+    <view class="w100-white" wx:for="{{contents}}" data-audioSrc="https://www.abceea.com/static/dialog/{{title}}/{{name}}/{{item[4]}}" data-selected="{{index}}" bindtap="tapAudioPlay" style='padding:15px 0 10px 0;border-bottom:1px solid ghostwhite'>
+        <view class='wc100' style='background:white;'>
+          <view class='wcl80'>
+            <image class='icon-image-middle1' src="https://www.abceea.com/static/dialog/{{item[1]}}.jpg" style=''/>
+            <text wx:if="{{index == selected}}" style='font-size:20px;text-align:left;color:rgb(255,127,39);padding-left:10px;padding-top:10px;'> {{item[1]}} </text>
+            <text wx:else style='font-size:20px;text-align:left;padding-left:10px;padding-top:10px;'> {{item[1]}} </text>
+          </view>
+          <view class='w20' wx:if="{{index == selected}}">
+            <play-icon class="icon-image-middle3" play-type="{{playType}}"></play-icon>
+          </view>
+        </view>
+        <view class='h05' style='background:white'></view>
+        <view class='wl100' style='background:white'>
+            <text wx:if="{{index == selected}}" style='font-size:20px;text-align:left;height:fit-content;color:rgb(255,127,39);'> {{item[2]}} </text>
+            <text wx:else style='font-size:20px;text-align:left;height:fit-content;'> {{item[2]}} </text>
+        </view>
+    </view>
+  </view>
+  <view style='height:84px;background:white'/>
+  <view class="w100-white" style='position:fixed;bottom:0px;border-top:1px solid ghostwhite'>
+    <view class='h20'/>
+    <view class='wc100'>
+      <view class='w50'>
+        <view wx:if="{{!sequence}}" class="w100" style='border-radius:50px;box-shadow: 0px 0px 5px grey;height:50px;width:70%;background:#04BE01;color:white;' bindtap='tapAudioSequencePlay'>
+          <text class="textGreyFont14" style="padding-top:13px;color:white;">顺序播放</text>
+        </view>
+        <view wx:else class="w100" style='border:1px solid grey;border-radius:50px;height:48px;width:70%;background:white;' bindtap='tapAudioSequenceStop'>
+          <text class="textGreyFont14" style="padding-top:13px;">停止播放</text>
+        </view>
+      </view>
+      <view class='w50'>
+        <view class="w100" style='border-radius:50px;box-shadow: 0px 0px 5px grey;height:50px;width:70%;background:rgb(255,127,39);color:white;' bindtap='tapRolePlay'>
+          <text class="textGreyFont14"style="padding-top:13px;color:white;">角色扮演</text>
+        </view>
+      </view>
+    </view>
+    <view class='h20'/>
+  </view>
+</block>
+<block wx:else>
+  <view class="w100-white" style='height:100vh'>
+    <image class='icon-image-small3' src="/image/loading.gif" style='padding-top:40vh'/>
+  </view>
+</block>

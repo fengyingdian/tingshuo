@@ -1,0 +1,173 @@
+<!--course.wxml-->
+<block wx:if="{{showPage}}">
+  <view style='height:95px'></view>
+  <view style='padding: 0 5px 0 5px'>
+    <view class="w100" wx:if="{{course}}">
+      <view class='h05-ghostwhite'></view>
+      <view class="itemRow1" style="height:40px;">
+        <view class="wl70">
+          <text class="textMid20" style='padding-left:20px'>每日一句-闯关 </text>
+        </view>
+        <view class="w20" bindtap='tapAllCourse'>
+          <text class="textGreyFont12">查看全部</text>
+        </view>
+        <view class="w10" bindtap='tapAllCourse'>
+          <image class="icon-image-thin3" src="../image/button/more.png"></image>
+        </view>
+      </view>
+      <scroll-view scroll-x class="image-group" scroll-x="true">
+        <view wx:for="{{course}}" wx:for-item="item">
+          <button class='w100' style='background:white' id="{{item[10]}}" data-date="{{item[1]}}" open-type="getUserInfo" bindgetuserinfo="tapOneCourse">
+            <image class='icon-image-course' src="https://www.abceea.com/static/class/{{item[1]}}/c.jpg" style='width:{{0.255*width}}px;height:{{0.37*width}}px'/>            
+            <text class="textMid20 wl100" style='padding-bottom:15px'> {{item[16]}} </text>
+          </button>
+        </view>
+      </scroll-view>
+    </view>
+  </view>
+  <view class="h10-ghostwhite"/>
+  <view style='padding: 0 5px 0 5px'>
+    <view class="w100" wx:if="{{course1}}">
+      <view class="itemRow1" style="height:40px;">
+        <view class="wl70">
+          <text class="textMid20" style='padding-left:20px'>进阶课程-音标 </text>
+        </view>
+        <view class="w20" bindtap="tapOneCourse1">
+          <text class="textGreyFont12">查看全部</text>
+        </view>
+        <view class="w10" bindtap="tapOneCourse1">
+          <image class="icon-image-thin3" src="../image/button/more.png"></image>
+        </view>
+      </view>
+      <scroll-view scroll-x class="image-group" scroll-x="true">
+        <view wx:for="{{course1}}" wx:for-item="item">
+          <button class='w100' bindtap="tapOneCourse2" style='background:white' id="{{item.id}}" data-name="{{item.name}}" >
+            <image class='icon-image-course' src="https://www.abceea.com/static/course1/{{item.id}}/c.jpg" style='width:{{0.42*width}}px;height:{{0.26*width}}px'/>            
+            <text class="textMid20 wl100" style='padding-bottom:15px'> {{item.name}} </text>
+          </button>
+        </view>
+      </scroll-view>
+    </view>
+  </view>
+  <view style='height:14px;background:ghostwhite'/>
+  <view style='padding: 0 15px 0 10px'>
+    <view  class='w100'>
+      <view class='wc100'>
+        <view class='w40' style='background:rgb(255,174,201);border-radius:5px;box-shadow:0px 0px 2px rgb(255,127,39);width:35%'>
+          <view class='wc100' style="">
+            <view class='w40' style="">
+              <image class="icon-image-small3" src="../image/button/rank.png" style='padding:10px 0px 10px 10px;'></image>
+            </view>
+            <view class='w60' style="padding-top:6px;height:50px">
+              <text style="color:white;font-size:14px">榜单</text>
+              <text style="color:white;font-size:12px">Ranking</text>
+            </view>
+          </view>
+        </view>
+        <view class='w60' style='width:65%'>
+          <view class='wc100' style='padding-left:20px;'>
+            <view class='w50' bindtap='tapPunchRanking'>
+              <view class='wc100' style="height:55px;background:white;border-radius:5px;box-shadow:0px 0px 1px rgb(210,210,210)">
+                <view class='w40'>
+                  <image class='icon-image-setting' src="../image/button/punch.png" style='padding-left:10px;height:25px;width:25px;'/>
+                </view>
+                <view class='wl60'>
+                  <text style='font-size:12px;'>打卡榜单</text>
+                </view>
+              </view>
+            </view>
+            <view class='w50' style='padding:0px 0px 0px 10px;' bindtap='tapCommentRanking'>
+              <view class='wc100' style="height:55px;background:white;border-radius:5px;border-radius:5px;box-shadow:0px 0px 1px rgb(210,210,210)">
+                <view class='w40'>
+                  <image class='icon-image-setting' src="../image/button/comment4.png" style='padding-left:10px;height:25px;width:25px;'/>
+                </view>
+                <view class='wl60'>
+                  <text style='font-size:12px;'>点评榜单</text>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="h10-ghostwhite"/>
+  </view>
+  <view style='padding: 0 15px 0 10px'>
+    <view  class='w100'>
+      <view class='wc100'>
+        <view class='w40' style='background:rgb(0,162,232);border-radius:5px;box-shadow:0px 0px 2px rgb(63,72,204);width:35%'>
+          <view class='wc100' style="">
+            <view class='w40' style="">
+              <image class="icon-image-small3" src="../image/button/find.png" style='padding:10px 0px 10px 10px;height:25px;width:25px;'></image>
+            </view>
+            <view class='w60' style="padding-top:6px;height:50px">
+              <text style="color:white;font-size:14px">发现</text>
+              <text style="color:white;font-size:12px">Discovery</text>
+            </view>
+          </view>
+        </view>
+        <view class='w60' style='width:65%'>
+          <view class='wc100' style='padding-left:20px;'>
+            <view class='w50' bindtap='tapTrans'>
+              <view class='wc100' style="height:55px;background:white;border-radius:5px;box-shadow:0px 0px 1px rgb(210,210,210)">
+                <view class='w40'>
+                  <image class='icon-image-setting' src="../image/button/voice1.png" style='padding-left:10px;height:25px;width:25px;'/>
+                </view>
+                <view class='wl60'>
+                  <text style='font-size:12px;'>同声传译</text>
+                </view>
+              </view>
+            </view>
+            <view class='w50' style='padding:0px 0px 0px 10px;' bindtap='tapIdentify'>
+              <view class='wc100' style="height:55px;background:white;border-radius:5px;border-radius:5px;box-shadow:0px 0px 1px rgb(210,210,210)">
+                <view class='w40'>
+                  <image class='icon-image-setting' src="../image/button/character.png" style='padding-left:10px;height:25px;width:25px;'/>
+                </view>
+                <view class='wl60'>
+                  <text style='font-size:12px;'>声优鉴定</text>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view style='height:14px;background:ghostwhite'/>
+  </view>
+
+  <view class="w100">
+    <view class="w80">
+      <text style='height:30px;'></text>
+      <text class="textGreyFont10"> 技术支持请联系微信：fengyingdian </text>
+      <text style='height:40px;'></text>
+    </view>
+  </view>
+  <view class="w100" style='position:fixed;top:0px;'>
+    <view style="height:10px"/>
+    <view class="itemRow2" style='width:96%;height:80px;'>
+      <view class="w25" bindtap='tapHead'>
+        <image class="icon-image-middle1" style="width:38px;height:38px" src="../../pages/image/button/class.png"></image>
+      </view>
+      <view class="wl45" style=''>
+        <text class="textMid18" style='padding-right:3px'> 加入晨读群</text>
+        <text class="textGreyFont10" style='overflow:hidden;'> 跟有趣的小伙伴们一起学习~ </text>
+      </view>
+      <view class="w30" style=''>
+        <button class="itemButtonRow" style='width:80%;height:36px;background:rgb(255,127,39)' bindtap='tapJoinGroup' open-type="getUserInfo" bindgetuserinfo="getUserInfo">
+          <text class="textMid20">加入</text>
+        </button>
+      </view>
+    </view>
+    <view style="height:10px"/>
+  </view>
+  <view class="w20" style='position:fixed;top:45px;right:0px;background:transparent;'>
+    <canvas-pick image="../../pages/image/button/pick1.png"/>
+  </view>
+  <button-broadcast audioSrc="{{course[0][4]}}" audioTitle="{{course[0][2]}}" imageSrc="../../pages/image/button/voice4.png" bindbroadcast="tapBroadcast"/>
+  <button-home imageSrc="../../pages/image/button/home3.png"/>
+</block>
+<block wx:else>
+  <view class="w100-white" style='height:100vh'>
+    <canvas-loading style="padding-top:20px" /> 
+  </view>
+</block>

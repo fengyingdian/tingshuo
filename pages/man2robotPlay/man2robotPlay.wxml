@@ -1,0 +1,115 @@
+<!--pages/man2robotPlay/man2robotPlay.wxml-->
+<!--pages/man2robot/man2robot.wxml-->
+<block wx:if="{{showPage}}">
+  <view class="w100-white" wx:if="{{showType == 0}}" style='background:white;height:100vh'>
+    <view class="w100-white" style='position:fixed;top:30vh;'>
+      <view class="w100-white" wx:for="{{roles}}"> 
+        <view class="w100" style='border:1px solid grey;border-radius:30px;height:40px;width:30%;background:white;' bindtap='tapSelectRole' data-role="{{item}}">
+          <text class="textGreyFont14" style="padding-top:9px;">{{item}}</text>
+        </view>
+        <view style='height:40px'/>
+      </view>
+    </view>
+  </view>
+  <block wx:elif="{{showType == 1}}">
+    <view class="w100-white" style='height:100vh'>
+      <image src="https://www.abceea.com/static/others/timing.gif" style='width:40vh;height:40vh;padding-top:20vh'> </image>
+    </view>
+  </block>
+  <block wx:elif="{{showType == 2}}">
+    <view style='padding:0 30px 0 30px; background:white;'>
+      <view class="w100-white" style='height:100vh'>
+        <view class='h10' style='background:white'></view>
+        <view class="w100-white" wx:if="{{selected<contents.length && selected>-1}}" data-audioSrc="https://www.abceea.com/static/dialog/{{title}}/{{name}}/{{contents[selected][4]}}" data-selected="{{index}}" style='padding:15px 0 10px 0;border-bottom:1px solid ghostwhite'>
+            <view class='wc100' style='background:white;'>
+              <view class='wcl80'>
+                <image class='icon-image-middle1' src="https://www.abceea.com/static/dialog/{{contents[selected][1]}}.jpg" style=''/>
+                <text style='font-size:20px;text-align:left;color:rgb(255,127,39);padding-left:10px;padding-top:10px;'> {{contents[selected][1]}} </text>
+              </view>              
+              <view class='w20' wx:if="{{contents[selected][1]!=selectedRole}}">
+                <play-icon class="icon-image-middle3" play-type="{{playType}}"></play-icon>
+              </view>
+            </view>
+            <view class='h05' style='background:white'></view>
+            <view class='wl100' style='background:white'>
+                <text style='font-size:20px;text-align:left;height:fit-content;color:rgb(255,127,39);'> {{contents[selected][2]}} </text>
+            </view>
+        </view>
+        <view class="w100-white" wx:if="{{selected+1<contents.length && selected>-1}}" data-audioSrc="https://www.abceea.com/static/dialog/{{title}}/{{name}}/{{contents[selected+1][4]}}" data-selected="{{index}}" bindtap="tapAudioPlay" style='padding:15px 0 10px 0;opacity:0.1'>
+            <view class='wc100' style='background:white;'>
+              <view class='wcl80'>
+                <image class='icon-image-middle1' src="https://www.abceea.com/static/dialog/{{contents[selected+1][1]}}.jpg" style=''/>
+                <text style='font-size:20px;text-align:left;padding-left:10px;padding-top:10px;'> {{contents[selected+1][1]}} </text>
+              </view>            
+            </view>
+            <view class='h05' style='background:white'></view>
+            <view class='wl100' style='background:white'>
+              <text style='font-size:20px;text-align:left;height:fit-content;'> {{contents[selected+1][2]}} </text>
+            </view>
+        </view>
+      </view>
+    </view>
+    <view wx:if="{{selectedRole==contents[selected][1]}}" style='height:120px'/>
+    <view wx:if="{{selectedRole==contents[selected][1]}}" class="w100-white" style='position:fixed;bottom:0px;border-top:1px solid ghostwhite;height:120px'>
+      <view class='h30'/>
+      <block>
+        <bottom-button-punch class="" bindrecordstart="tapBtnRecord" bindrecordend="tapBtnStop" data-toUsrName="{{profile.name}}" data-toUsrId="{{profile.usrId}}" button-disabled="{{bottomButtonDisabled}}">
+        </bottom-button-punch>
+      </block>
+    </view>
+    <view class='w100' wx:if="{{recordTimeShow}}" style='position:fixed;bottom:200px;background:transparent;'>
+        <view class='w60' style='border-radius:3px;align-content:center;background:black;opacity:0.7'>
+          <view class='h20'></view>
+          <text class="text18" style='color:white;background:transparent'>{{recordSecondShow}}"/10"</text>
+          <view class='h20'></view>
+        </view>
+      </view>
+  </block>
+  <block wx:elif="{{showType == 3}}" >
+    <view style='padding:0 30px 0 30px;background:white'>
+      <view class='h10' style='background:white'></view>
+      <view class="w100-white" wx:for="{{contents}}" data-audioSrc="https://www.abceea.com/static/dialog/{{title}}/{{name}}/{{item[4]}}" data-selected="{{index}}" bindtap="tapAudioPlay" style='padding:15px 0 10px 0;border-bottom:1px solid ghostwhite'>
+          <view class='wc100' style='background:white;'>
+            <view class='wcl80'>
+              <image class='icon-image-middle1' src="https://www.abceea.com/static/dialog/{{item[1]}}.jpg" style=''/>
+              <text wx:if="{{index == selected}}" style='font-size:20px;text-align:left;color:rgb(255,127,39);padding-left:10px;padding-top:10px;'> {{item[1]}} </text>
+              <text wx:else style='font-size:20px;text-align:left;padding-left:10px;padding-top:10px;'> {{item[1]}} </text>
+            </view>
+            <view class='w20' wx:if="{{index == selected}}">
+              <play-icon class="icon-image-middle3" play-type="{{playType}}"></play-icon>
+            </view>
+          </view>
+          <view class='h05' style='background:white'></view>
+          <view class='wl100' style='background:white'>
+              <text wx:if="{{index == selected}}" style='font-size:20px;text-align:left;height:fit-content;color:rgb(255,127,39);'> {{item[2]}} </text>
+              <text wx:else style='font-size:20px;text-align:left;height:fit-content;'> {{item[2]}} </text>
+          </view>
+      </view>
+    </view>
+    <view style='height:91px;background:white'/>
+    <view class="w100-white" style='position:fixed;bottom:0px;border-top:1px solid ghostwhite'>
+      <view class='h20'/>
+      <view class='wc100'>
+        <view class='w50'>
+          <view wx:if="{{!sequence}}" class="w100" style='border-radius:50px;box-shadow: 0px 0px 5px grey;height:50px;width:70%;background:#04BE01;color:white;' bindtap='tapAudioSequencePlay'>
+            <text class="textGreyFont14" style="padding-top:13px;color:white;">配音预览</text>
+          </view>
+          <view wx:else class="w100" style='border:1px solid grey;border-radius:50px;height:48px;width:70%;background:white;' bindtap='tapAudioRecordStop'>
+            <text class="textGreyFont14" style="padding-top:13px;">停止播放</text>
+          </view>
+        </view>
+        <view class='w50'>
+          <view class="w100" style='border-radius:50px;box-shadow: 0px 0px 5px grey;height:50px;width:70%;background:rgb(255,127,39);color:white;' bindtap='tapUpLoad'>
+            <text class="textGreyFont14"style="padding-top:13px;color:white;">上传配音</text>
+          </view>
+        </view>
+      </view>
+      <view class='h20'/>
+    </view>
+  </block>
+</block>
+<block wx:else>
+  <view class="w100-white" style='height:100vh'>
+    <image class='icon-image-small3' src="/image/loading.gif" style='padding-top:40vh'/>
+  </view>
+</block>

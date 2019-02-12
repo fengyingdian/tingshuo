@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "play-icon": "/components/play-icon/index",
+    "bottom-button-punch": "/components/bottom-button-punch/index"
+  }
+}

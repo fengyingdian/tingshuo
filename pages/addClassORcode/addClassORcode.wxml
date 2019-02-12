@@ -1,0 +1,14 @@
+<!--pages/addClassORcode/addClassORcode.wxml-->
+<view class="w100-white" style=''>
+  <view class="wl80">
+    <text class='textMid20' style='margin-top:10px;'> 上传班级二维码 </text>
+    <image class='icon-image-large3'style='margin-top:10px;margin-bottom:10px;' bindtap='addORCodeImage' src="{{imageSrc}}"/>
+  </view>
+</view>
+<view class="h20-ghostwhite"/>
+<view class="w100" style=''>
+  <view class="w50">
+    <button class="itemButtonRow textMid24 w80" bindtap='tapConfirm' style='height:40px;'> 确定    </button>
+  </view>
+</view>
+<view class="h20-ghostwhite"/>

@@ -1,0 +1,18 @@
+/**course.wxss**/
+@import "../../lib/weui.wxss";
+@import "../../lib/myui.wxss";
+@import "../../lib/audio.wxss";
+@import "../../lib/text.wxss";
+
+.calendar {
+  background-color: white;
+  padding-top: 10px;
+}
+
+.header {
+  font-size: large; /*修改了标题文字和按钮的大小*/
+}
+
+.board {
+  background-color: white;
+}

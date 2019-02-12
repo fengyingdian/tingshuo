@@ -1,0 +1,4 @@
+<!--myComponents/canvas-time/index.wxml-->
+<view class='w100' style="background:transparent">
+  <canvas style="width:50px;height:220px;background:transparent" canvas-id="rocketCanvas" bindtap='onTap'></canvas>
+</view>

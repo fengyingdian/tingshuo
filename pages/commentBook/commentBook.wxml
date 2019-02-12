@@ -1,0 +1,55 @@
+<!--pages/commentBook/commentBook.wxml-->
+<view class='h20'></view>
+<view class='w100'>
+  <view style='border-bottom:1px solid grey;'>
+    <text class='text20' style='color:#04BE01'>PICK你的爱豆，请TA给你点评</text>
+    <text class='h10' ></text>
+  </view>
+    <text class='textGreyFont10' style='padding-top:5px;'>(每天更新打卡排行榜前50名)</text>
+</view>
+<view class='h20'></view>
+<view wx:if="{{canBookList}}">
+  <view wx:for="{{canBookList}}" class='w100'>
+    <view class="comment" style='width:80%' >
+      <view class='h20'></view>
+      <view class="wc100">
+        <view class='w30' bindtap='tapOnePunch' data-usrId='{{item[1]}}'>
+          <image class="icon-image-small3" src="../image/button/punch.png"> </image>
+          <view class="textGrey15"> 打卡 </view>
+          <view class="text20"> {{item[2]}} </view>
+          <view class="textGrey15"> times </view>
+        </view>
+        <view class='w40' bindtap='tapOneUsr' data-usrId='{{item[1]}}'>
+          <image class="icon-image-middle1" src="{{item[14]}}"></image>
+          <view class="h10"></view>
+          <view class="text15"> {{item[8]}} </view>
+        </view>
+        <view class='w30' bindtap='tapOneComment' data-usrId='{{item[1]}}'>
+          <image class="icon-image-small3" src="../image/button/comment.png"> </image>
+          <view class="textGrey15"> 点评 </view>
+          <view class="text20"> {{item[3]}} </view>
+          <view class="textGrey15"> times </view>
+        </view>
+      </view>
+      <view class="wc100">
+        <view style="width:100%;">
+          <slider bindchange="slider2change" bindchanging='' step="50" value='{{item[16]*50}}' min="50" max="10000" block-size="18" id="{{index}}"/>
+          <view class='w100-white'>
+            <text class='textGreyFont14' style='padding-bottom:10px;'> 给TA{{item[16]*50}}朵小红花 </text>
+          </view>
+        </view>
+      </view>
+      <view class="w80">
+        <view class="itemBooking" bindtap='tapPick' data-usrId='{{item[1]}}' data-count='{{item[16]*50}}' style='height:30px;padding:3px 20px 3px 20px;'> PICK </view>
+      </view>
+      <view class="h10"/> 
+    </view>
+    <view class="h20"/> 
+  </view>
+  <view class='w100' style='height:50px'>
+    <text class="textGreyFont12" style='padding-top:15px;'> -- 只显示打卡排行前50的大神哦 -- </text>
+  </view>
+</view>
+<view wx:else class='w100'>
+  <text> {{showTips}}</text>
+</view>

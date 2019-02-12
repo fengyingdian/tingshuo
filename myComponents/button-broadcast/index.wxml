@@ -1,0 +1,4 @@
+<!--myComponents/button-audio/index.wxml-->
+<view class="w20" style='position:fixed;bottom:30px;right:10px;background:transparent;' bindtap="onBroadcast">
+  <image animation="{{animationData}}" class="icon-image-small4" src="{{imageSrc}}" style='width:40px;height:40px;border:5px solid white;box-shadow:0px 0px 20px grey;opacity:0.8'></image>
+</view>

@@ -1,0 +1,64 @@
+<!--course.wxml-->
+<block wx:if="{{showPage}}">
+  <view class="scrollBox2" style='position:fixed;top:0px;padding-top:10px;'> 
+    <scroll-view scroll-x style="width:auto; overflow:hidden;background:white">
+      <view class="itemList3" wx:for="{{courseSubTitles}}" wx:for-item="item">
+        <view wx:if="{{courseSubTitlesSelect == index}}">
+          <view id="{{index}}" class="itemSelected" bindtap='tapCourseSubTitle' data-data="{{item.data}}" data-title="{{item.title}}">{{item.title}}</view>
+        </view>
+        <view wx:else>
+          <view id="{{index}}" class="itemNormal" bindtap='tapCourseSubTitle' data-data="{{item.data}}" data-title="{{item.title}}">{{item.title}}</view>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+  <view style='height:50px;'/>
+  <view wx:if="{{calendar}}" style='height:1px;background:ghostwhite'/>
+  <calendar wx:if="{{calendar}}" calendar-style="calendar" header-style="header" board-style="board" binddayClick="dayClick" bindnextMonth="next" bindprevMonth="prev" binddateChange="dateChange" days-color="{{courseData}}" cell-size="30" active-type="rounded"/>
+  <view wx:if="{{calendar}}" style='height:10px;background:white'/>
+
+  <view wx:if="{{courses}}" class="w-white">
+    <view class='h01-ghostwhite'/>
+    <view wx:for="{{courses}}" style='padding: 0 20px 0 20px '> 
+      <view class="itemCourse" bindtap="tapOneCourse" id="{{item[5]}}" data-date="{{item[1]}}" data-content="{{item[2]}}" style='height:110px'>
+        <view class="w20">
+          <view class='h20'/>
+          <image class='icon-image-cover' src="https://www.abceea.com/static/class/{{item[1]}}/c.jpg"/>
+          <view class='h20'/>
+        </view>
+        <view class="wl70" style='padding: 0 0 0 20px '>
+          <text class="textMid30"> {{item[1]}} </text>
+          <text class="textGrey60"> {{item[2]}} </text>
+        </view>
+      </view>
+      <view class="h01-ghostwhite"/>
+    </view>
+  </view>
+  <view wx:if="{{words}}" class="w-white">
+    <view wx:for="{{words}}" style='padding: 0 20px 0 20px '>
+      <view class="itemWord" id="{{index}}">
+        <view class="wl95">
+          <text class="textThin20"> {{item.key}} </text>
+        </view>
+        <view class="wc05">
+          <text class="textGreyFont14"> {{item.count}} </text>
+        </view>
+      </view>
+      <view class="h01-ghostwhite"/>
+    </view>
+  </view>
+
+  <view class="h20-ghostwhite"/>
+  <view class='w100'>
+    <view class='w80'>
+      <text class="textGreyFont14">{{bottomTips}}</text>
+      <text class="h20-ghostwhite"></text>
+    </view>
+  </view>
+</block>
+<block wx:else>
+  <view class="w100-white" style='height:100vh'>
+    <image class='icon-image-small3' src="/image/loading.gif" style='padding-top:40vh'/>
+  </view>
+</block>
+

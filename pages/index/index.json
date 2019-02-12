@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "button-broadcast": "/myComponents/button-broadcast/index",
+    "canvas-loading": "/myComponents/canvas-loading/index",
+    "canvas-pick": "/myComponents/canvas-pick/index"
+  }
+}

@@ -1,0 +1,63 @@
+<!--pages/class/class.wxml-->
+<block wx:if="{{showPage}}">
+  <block wx:if="{{showType==0}}">
+    <view class="w100" wx:if="{{myClass}}" style='position:fixed;top:0px'>
+      <view class='h05-ghostwhite'></view>
+      <view class="itemRow1" style="height:30px;">
+        <view class="wl80">
+          <text class="textMid20" style='padding-left:20px;padding-top:10px'>我的班级 </text>
+        </view>
+      </view>
+      <view class="scrollBox" style='height:120px;padding:5px 0px 5px 20px;'> 
+        <scroll-view scroll-x style="width:auto; overflow:hidden;background:white">
+          <view class="itemList6" wx:for="{{myClass}}" wx:for-item="item" style='padding:10px 20px 20px 0px;'>
+            <button bindtap="tapOneClass" id="{{item.classInfo[5]}}" class='w100' style='padding:0px 10px 5px 10px;background:white;border-radius:5px;box-shadow:0px 0px 0px gainsboro;width:90px;' >
+              <view class='h10'></view>
+              <image class='icon-image-class' src="https://www.abceea.com/static/group/{{item.classInfo[5]}}/c" style=''/>
+              <text class="textGreyFont12" style='' > {{item.classInfo[1]}} </text>
+            <text class="textGreyFont12" style='color:{{item.classInfo[12]}}' > {{item.classInfo[11]}} </text>
+            </button>
+          </view>
+        </scroll-view>
+      </view>
+      <view class='h05-ghostwhite'></view>
+    </view>
+    <view style='height:166px' wx:if="{{myClass}}"/>
+    <view class="w-white" style="padding: 0 20px 0 20px">
+      <view class="itemClass" style="" bindtap="tapAddClass">
+        <view class="w20">
+          <image class='icon-image-small3' src="../image/button/add2.png"/>
+        </view>
+        <view class="wl80">
+          <text class="textMid20">创建我的班级 </text>
+        </view>
+      </view>
+    </view>
+    <view wx:if="{{classes}}" class="w-white">
+      <view wx:for="{{classes}}" style="padding: 0 20px 0 20px"> 
+        <view class="itemClass" bindtap="tapOneClass" id="{{item.classInfo[5]}}" style='height:80px'>
+          <view class="w20">
+            <image class='icon-image-cover3' src="https://www.abceea.com/static/group/{{item.classInfo[5]}}/c" style='border-radius:3px;'/>
+          </view>
+          <view class="wl60" style='padding: 0 0 0 5px '>
+            <text class="textMid20"> {{item.classInfo[1]}} </text>
+            <text wx:if="{{item.classInfo[2] == 1}}" class="textGreyFont12"> 美音 </text>
+            <text wx:elif="{{item.classInfo[2] == 2}}" class="textGreyFont12"> 英音 </text>
+            <text wx:elif="{{item.classInfo[2] == 3}}" class="textGreyFont12"> 混音 </text>
+          </view>
+          <view class="w20">
+            <text class="textGreyFont14"> {{item.classUsrs.length}}/{{item.classInfo[3]}} </text>
+          </view>
+        </view>
+      </view>
+      <view class='w100' style='height:50px'>
+        <text class="textGreyFont12" style='padding-top:15px;'> -- 与其漫无休止的等待，不如创建自己的班级 -- </text>
+      </view>
+    </view>
+  </block>
+</block>
+<block wx:else>
+  <view class="w100-white" style='height:100vh'>
+    <canvas-loading /> 
+  </view>
+</block>

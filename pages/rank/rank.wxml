@@ -1,0 +1,113 @@
+<!--pages/rank/rank.wxml-->
+<view wx:if="{{showPage}}">
+  <view class='w100' style='height:50px'>
+    <text class="textGreyFont12" style='padding-top:15px;'> -- 这里不是开始，也不是结束，甚至不是开始的结束 -- </text>
+  </view>
+  <view wx:if="{{select==0}}" class="w-white">
+    <view wx:for="{{punchRank}}" style="padding: 0 10px 0 20px"> 
+      <view class="itemClass" id="{{item[1]}}" style='height:80px'>
+        <view class="w20" data-usrid="{{item[1]}}" bindtap='tapOneUsr'>
+          <image class='icon-image-usr' src="{{item[14]}}"/>
+        </view>
+        <view class="wl50">
+          <text class="textMid20" style='padding-bottom:5px'> {{item[8]}} </text>
+          <view class='wc100'>
+            <image class="icon-image-thin3" data-usrid="{{item[1]}}" bindtap='tapOnePunch' src='../image/button/punch.png'> </image>
+            <text class="textGreyFont12"  data-usrid="{{item[1]}}" bindtap='tapOnePunch' style='padding-left:4px'> {{item[2]}} </text>
+            <image class="icon-image-thin3"  data-usrid="{{item[1]}}" bindtap='tapOneComment' src='../image/button/comment3.png' style='padding-left:8px'> </image>
+            <text class="textGreyFont12"  data-usrid="{{item[1]}}" bindtap='tapOneComment' style='padding-left:4px'> {{item[3]}} </text>
+          </view>
+        </view>
+        <view class="w30" bindtap='tapFlower' data-usrid="{{item[1]}}" data-name="{{item[8]}}" data-image="{{item[14]}}">
+          <view class="itemBooking" style='height:24px;padding:3px 20px 3px 20px;font-size:14px;'>送花
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class='w100' style='height:50px'>
+      <text class="textGreyFont12" style='padding-top:15px;'> -- 结束只是新的开始，莫忘初心，砥砺前行 -- </text>
+    </view>
+  </view>
+  <view wx:elif="{{select==1}}" class="w-white">
+    <view wx:for="{{commentRank}}" style="padding: 0 10px 0 20px"> 
+      <view class="itemClass" id="{{item[1]}}" style='height:80px'>
+        <view class="w20" data-usrid="{{item[1]}}" bindtap='tapOneUsr'>
+          <image class='icon-image-usr' src="{{item[13]}}"/>
+        </view>
+        <view class="wl50">
+          <text class="textMid20" style='padding-bottom:5px'> {{item[7]}} </text>
+          <view class='wc100' data-usrid="{{item[1]}}" bindtap='tapOneComment'>
+            <image class="icon-image-thin3" src='../image/button/comment.png'>  </image>
+            <text class="textGreyFont12" style='padding-left:2px'> {{item[2]}} </text>
+          </view>
+        </view>
+        <view class="w30" bindtap='tapFlower' data-usrid="{{item[1]}}" data-name="{{item[7]}}" data-image="{{item[13]}}"> 
+          <view class="itemBooking" style='height:24px;padding:3px 20px 3px 20px;font-size:14px;'>送花
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class='w100' style='height:50px'>
+      <text class="textGreyFont12" style='padding-top:15px;'> -- 结束只是新的开始，莫忘初心，砥砺前行 -- </text>
+    </view>
+  </view>
+  <view wx:if="{{showTips}}" class='w100' style='height:50px'>
+    <text class="textGreyFont14"> {{showTips}} </text>
+  </view>
+  <view class='itemTop' style='position:fixed;top:0px;'>
+    <view class="w50" wx:for="{{titles}}" style='border-left:1px solid ghostwhite;border-right:1px solid ghostwhite;'>
+      <view class='w100-white' wx:if="{{index == select}}" bindtap='tapTitle' id="{{index}}" style='color:#04BE01;width:100%;padding-top:10px;padding-bottom:10px'>
+        <text class='textMid20'> {{item.name}} </text>
+      </view>
+      <view class='w100-white' wx:else bindtap='tapTitle' id="{{index}}" style='width:100%;padding-top:10px;padding-bottom:10px'>
+        <text class='textMid20'> {{item.name}} </text>
+      </view>
+    </view>
+  </view>
+</view>
+<block wx:else>
+  <view class="w100-white" style='height:100vh'>
+    <image class='icon-image-small3' src="/image/loading.gif" style='padding-top:40vh'/>
+  </view>
+</block>
+
+<block wx:if="{{showReward}}">
+  <view class='w100' style='height:100vh;background:ghostwhite;position:fixed;top:0px;'>
+    <view class="w100" style='padding-top:25vh;'>
+      <view class="comment" style='width:80%;'>
+        <view class='h20'></view>
+        <view class="wc100">
+          <view class='w30'/>
+          <view class='w40' bindtap='tapOneUsr' data-usrId='{{rewardId}}'>
+            <image class="icon-image-middle1" src="{{rewardImage}}"></image>
+            <view class="h10"></view>
+            <view class="text15"> {{rewardName}} </view>
+          </view>
+          <view class='w30'/>
+        </view>
+        <view class="wc100">
+          <view style="width:100%;">
+            <slider bindchange="slider2change" bindchanging='' step="5" value='{{rewardCount}}' min="5" max="500" block-size="18" id="{{index}}"/>
+            <view class='w100-white'>
+              <text class='textGreyFont14' style='padding-bottom:10px;'> 打赏{{rewardCount}}朵小红花 </text>
+            </view>
+          </view>
+        </view> 
+        <view class='wc100'>
+          <view class='w50'>
+            <view class="itemButtonRow2" bindtap='tapCancelPick' style='width:90%;padding-top:6px'>
+              <text class="textMid24"> 取消 </text>
+            </view>
+          </view>
+          <view class='w50'>
+            <view class="itemButtonRow2" bindtap='tapPick' style='width:90%;padding-top:6px'>
+              <text class="textMid24"> 确定 </text>
+            </view>
+          </view>
+        </view>
+        <view class='h20'></view>
+      </view>
+    </view>
+  </view>
+</block>
+

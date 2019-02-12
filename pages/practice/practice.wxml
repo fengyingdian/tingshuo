@@ -1,0 +1,57 @@
+<!--pages/practice/practice.wxml-->
+<view class='w100-white'>
+  <text class='h30'></text>
+  <view style='border-bottom: 1px solid grey'>
+    <text class='textGreyFont14'>跟读次数</text>
+    <text class='h10'></text>
+  </view>
+  <text class='text30'>{{practiceLeft}}/{{practiceTime}}</text>
+  <text class='h10'></text>
+  <view class='wc90'>
+    <text class='w10'>5</text>
+    <view style="width:80%;">
+      <slider bindchange="slider2change" bindchanging='slider2changing' step="5" value='{{practiceTime}}' min="5" max="500"/>
+    </view>
+    <text class='w10'>500</text>
+  </view>
+  <text class='h10'></text>
+</view>
+
+<view class="w100-white">
+  <video class="w96" id="myVideo" src="{{videoSrc}}" binderror="videoErrorCallback" bindended="videoEndedCallback" controls bindplay="videoPlayCallback" controls="false"></video>
+  <view class='h10'></view>
+  <view class="w90-white">
+    <text class="textFC18" selectable="true"> {{content}} </text>
+    <view class='h10'/>
+  </view>
+  <view style='border-bottom: 1px solid grey'>
+    <text class='textGreyFont14'>延迟秒数</text>
+    <text class='h10'></text>
+  </view>
+  <text class='text30'>{{delayLeft}}"/{{delayTime}}"</text>
+  <text class='h10'></text>
+  <view class='wc90'>
+    <text class='w10'>0</text>
+    <view style="width:80%;">
+      <slider bindchange="slider2changeDelayTime" bindchanging='slider2changingDelayTime' step="1" value='{{delayTime}}' min="0" max="20"/>
+    </view>
+    <text class='w10'>20</text>
+  </view>
+  <text class='h10'></text>
+</view>
+
+<view class='h20'></view>
+
+<view class="wc100">
+  <view class="w33">
+    <button class="itemButtonRow textMid24 w80" bindtap='tapPlay' style='height:40px;'> 开始 </button>
+  </view>
+  <view class="w33">
+    <button class="itemButtonRow textMid24 w80" bindtap='tapPause' style='height:40px;'> 暂停 </button>
+  </view>
+  <view class="w33">
+    <button class="itemButtonRow textMid24 w80" bindtap='tapReset' style='height:40px;'> 重置 </button>
+  </view>
+</view>
+
+<view class='h20'></view>

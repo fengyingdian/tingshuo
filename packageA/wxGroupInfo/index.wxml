@@ -1,0 +1,29 @@
+<!--packageA/wxGroupInfo/index.wxml-->
+<view class='w100-white'>
+  <view class="h30"/>
+  <text class="text20">加入微信晨读群</text>
+  <text class="h20"></text>
+  <text class="textGreyFont14">跟有趣的小伙伴一起学习</text>
+  <text class="textGreyFont14">一个人可以走的很快，一群人可以走的更远</text>
+  <text class="h20"></text>
+  <image style='width:100%;' mode='aspectFit' src='https://www.abceea.com/static/others/wx.png'  bindtap='tapPreviewImage'data-src="https://www.abceea.com/static/others/wx.png" />
+  <view class="h20"/>
+  <text class="textGreyFont14">添加客服微信加入班级</text>
+  <text class="textGreyFont14">（点击预览并长按保存二维码至相册）</text>
+  <text class="textGreyFont14">或者直接添加微信: go_for_dreams</text>
+  <text class="h20"></text>
+  <image style='width:100%;' mode='aspectFit' src='https://www.abceea.com/static/others/go_for_dreams_ORcode.jpg' data-src="https://www.abceea.com/static/others/go_for_dreams_ORcode.jpg" bindtap='tapPreviewImage'/>
+  <view style='height:50px'></view>
+</view>
+<view class="h20-ghostwhite"/>
+<view class="h10-ghostwhite"/>
+<view class="w100-white" style='position:fixed;bottom:0px;'>
+  <view class="wc100" style='height:50px'>
+    <view class="w40" style='border:0px solid ghostwhite;background:red;height:50px' bindtap='tapReturn'>
+      <text style="padding-top:14px;color:white;font-size:14px;font-weight:900;"> 返回 </text>
+    </view>
+    <view class="w60" style='border:0px solid ghostwhite;background:rgb(34,177,76);height:50px' bindtap='tapSaveImage'>
+      <text style="padding-top:14px;color:white;font-size:14px;font-weight:900;"> 保存二维码 </text>
+    </view>
+  </view>
+</view>

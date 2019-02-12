@@ -1,0 +1,43 @@
+<!--index.wxml-->
+<view class="w100">
+  <view style='height:170px'/>
+  <view class="scrollBox" style='height:90px'> 
+    <scroll-view scroll-x style="width:auto;overflow:hidden;background:white">
+      <view class="itemList5" wx:for="{{setting1}}" wx:for-item="item" style='padding-top:15px;'>
+        <button open-type="{{item.openType}}" bindgetuserinfo="{{item.bind}}" bindtap='{{item.tap}}' class='w100'style='background:{{item.bk}};' >
+          <image class='icon-image-thin3' src="{{item.image}}"style='padding-top:10px;'/>
+          <text class="textGreyFont12" style='padding-top:5px;color:{{item.color}};' > {{item.name}} </text>
+        </button>
+      </view>
+    </scroll-view>
+  </view>
+  <view class="h10-ghostwhite"/>
+  <view class='w100-white' wx:for="{{setting2}}">
+    <view class="itemClass" bindtap='{{item.tapFun}}'>
+      <view class="w20">
+        <image class='icon-image-thin3' src="{{item.image}}"/>
+      </view>
+      <view class="wl65">
+        <text class="textMid20"> {{item.name}} </text>
+      </view>
+      <view class="w15">
+        <image class='icon-image-thin3' src="../image/button/more.png"/>
+      </view>
+    </view>
+  </view>
+  <view class="h10-ghostwhite"/>
+  <view class="w100" style='background:ghostwhite;position:fixed;top:0px;'>
+    <view  class="itemRow2" style="height:160px;background-image:url(https://www.abceea.com/static/others/mineCover3.jpg)">
+      <view class="w100-white" style='background:transparent;padding-top:20px'>
+        <image class="icon-image-large1" src="{{userInfo.imageSrc}}"></image>
+        <view  class="w10-white">
+          <view  class="wc100" style='height:40px'>
+            <text class="textMid24" style='padding-right:3px;color:white'> hi, </text>
+            <text class="text24" style="color:rgb(255,127,39)">  {{userInfo.nickName}}</text>
+            <text class="textMid24" style="color:white"> , welcome back home! </text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

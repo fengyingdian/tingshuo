@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "bottom-button-punch": "/components/bottom-button-punch/index",
+    "button-home": "/myComponents/button-home/index"
+  }
+}

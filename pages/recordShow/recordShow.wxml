@@ -1,0 +1,339 @@
+<!--pages/recordShow/recordShow.wxml-->
+<template name="comment">
+  <view class="comment">
+    <view class="itemRow4" id="{{commentId}}">
+      <view class="w20" bindtap='tapCommentUser' data-usrId="{{usrId}}">
+        <image class="icon-image-usr" src="{{image}}"></image>
+      </view>
+      <view class="wl65">
+        <view  class="wc100" style='height:30px'>
+          <text class="text18"> {{name}}</text>
+          <text class="textGreyFont12" wx:if="{{showToUsr}}" style="color:grey;padding:0 3px 0 3px">to</text>
+          <text class="text18" wx:if="{{showToUsr}}"> {{toUsrName}}</text>
+        </view>
+        <text class="textGrey18"> {{time}} </text>
+      </view>
+      <view class="w15" wx:if="{{canDelete}}" bindtap="tapCommentDelete" data-commentId="{{commentId}}">
+        <image class="icon-image-small1" src="../image/button/cancelGreen.png"></image>
+        <view class='h10'></view>
+      </view>
+      <view class="w15" wx:else id="{{index}}" bindtap="tapCommentExpand" data-commentId="{{commentId}}">
+        <image class="icon-image-small3" src="{{expandImage}}"></image>
+        <view class='h10'></view>
+      </view>
+    </view>
+    <view class="itemRow5" wx:if="{{contentType>0}}">
+      <view class="w20"/>
+      <view class="wl60">
+        <view wx:if="{{contentType==1}}">
+          <text class="textGreyFont14" selectable="true">{{content}}</text>
+          <view class="h20"/> 
+        </view>
+        <block wx:elif="{{contentType>1}}">
+          <view class='w60'>
+            <view class="audioSmall60" style='width:100%'>
+              <view class="w05"/>
+              <form class="w30" id="{{index}}" bindtap="tapCommentAudio">
+                <button class="buttonBoxSmall" form-type="submit">
+                  <image class="icon-image-small4" src="{{imagePlay}}"></image>
+                </button>
+              </form> 
+              <view class="w50"/>
+              <text class="w20" wx:if="{{second>=0}}"> {{second}}"</text>
+            </view>
+            <view style='height:30px'/> 
+          </view>
+        </block>
+      </view>  
+      <view class='w15' style='width:18%' wx:if="{{showText}}" id="{{index}}" bindtap="tapToText">
+        <view class='showText'>
+          <view style='padding-top:5px;'> {{showTextTitle}} </view>
+        </view>
+        <view style='height:30px'/> 
+      </view>
+      <view class="w02"/>
+    </view>
+    <view class="itemRow5" wx:if="{{showTextContent}}">
+      <view class="w20"/>
+      <view class="wl60">
+        <text class="textGreyFont14" selectable="true">{{contentText}}</text>
+        <view style='height:10px'/> 
+        <text class="textGreyFont10" > 注：该功能正在测试中，上述文字仅供参考，腾讯"同声传译"插件提供技术支持</text>
+        <view style='height:20px'/> 
+      </view>
+    </view>
+    <view class="itemRow5" style='background:white;height:60px' wx:if="{{expand}}">
+      <view class="w20"/>
+      <view class="w15 commentTips" bindtap="tapBtnText" id="{{index}}" data-toUsrName="{{name}}" data-toUsrId="{{usrId}}" style='position:relative;top:-10px;'>
+        <image class="icon-image-thin3" src="../image/button/comment.png" style='padding-top:5px'></image>
+        <text class='textGreyFont10'> 文字回复 </text>
+      </view> 
+      <view class="w05"/>
+      <view class="w15 commentTips" bindtap="tapBtnRecordShow" id="{{index}}" data-toUsrName="{{name}}" data-toUsrId="{{usrId}}" style='position:relative;top:-10px;'>
+        <image class="icon-image-thin3" src="../image/button/comment4.png" style='padding-top:5px'></image>
+        <text class='textGreyFont10'> 语音回复 </text>
+      </view> 
+      <view class="w05"/>
+      <view class="w15 commentTips" bindtap="tapFlower" id="{{index}}" data-commentId="{{commentId}}"  data-usrId="{{usrId}}" data-name="{{name}}" data-image="{{image}}" style='position:relative;top:-10px;'>
+        <image class="icon-image-thin3" src="../image/button/flower3.png" style='padding-top:5px'></image>
+        <text class='textGreyFont10'> 送花 </text>
+      </view> 
+      <view class="w05"/>
+      <view class="w15 commentTips" bindtap="tapThumbUpComment" id="{{index}}" data-commentId="{{commentId}}" style='position:relative;top:-10px;'>
+        <image class="icon-image-thin3" wx:if="{{hasThumb}}" src="../image/button/thumb2.png" style='padding-top:5px;padding-left:1px;'></image>
+        <image class="icon-image-thin3" wx:else src="../image/button/thumb1.png" style='padding-top:5px;padding-left:1px;'></image>
+        <text class='textGreyFont10'>赞 {{thumb}} </text>
+      </view> 
+      <view class="w05"/>
+    </view>
+  </view>
+
+</template>
+
+<block wx:if="{{showPage}}">
+  <view class="topBox">
+    <view class="top1">
+      <view class="textWhite30"> {{dateName}} </view>
+      <form class="audioBox" bindsubmit="tapPlay" report-submit='true' style='position:absolute;top:30px;'>
+        <button class="buttonBox1" form-type="submit">
+          <image class="icon-image-middle4" src="{{srcPlay}}"></image>
+        </button>
+      </form>    
+    </view>
+  </view>
+  <view>
+    <view class="w100-white">
+      <view class="h20"/>
+      <text class="textGrey21" wx:if="{{punchSecond>=0}}"> {{punchMinute}}:{{punchSecond}} </text>
+      <view class="h10"/>
+    </view>
+    <view class="w100-white">
+      <view class="w90-white">
+        <text class="textFC18" selectable="true"> {{profile.content}} </text>
+        <view class='h10'/>
+        <block wx:if="{{canShowAudioText}}">
+          <block wx:if="{{showAudioText}}">
+            <view class='showText' bindtap='tapAudioTextHide' style='width:60%'>
+              <view style='padding: 5px 5px 0px 5px;'> 收起 </view>
+            </view>
+            <text class="textGreyFont14"> {{profile.audioText}} </text>
+          </block>
+          <block wx:else>
+            <view class='showText' bindtap='tapAudioTextShow' style='width:60%'>
+              <view style='padding: 5px 5px 0px 5px;'> 打卡语音转文字 </view>
+            </view>
+          </block>
+        </block>
+        <view class='h10'/>
+      </view>
+    </view>
+    <view class="h02-ghostwhite"/>
+    <view class="comment" style='height: 130px;'>
+      <view class="itemRow4" id="{{profile.punchId}}">
+        <view class="w20" bindtap='tapOneUsr' data-usrId="{{profile.usrId}}">
+          <image class="icon-image-usr" src="{{profile.image}}"></image>
+        </view>
+        <view class="wl60">
+          <view wx:if="{{role=='professor'}}" class="text18"> {{profile.name}}-课件老师</view>
+          <view wx:elif="{{role=='teacher'}}" class="text18"> {{profile.name}}-点评老师</view>
+          <view wx:elif="{{role=='monitor'}}" class="text18"> {{profile.name}}-班长</view>
+          <view wx:elif="{{role=='secretary'}}" class="text18"> {{profile.name}}-支书</view>
+          <view wx:elif="{{role=='monitorAssistant'}}" class="text18"> {{profile.name}}-班助</view>
+          <view wx:elif="{{role=='editor'}}" class="text18"> {{profile.name}}-编辑</view>
+          <view wx:elif="{{role=='teacherAssistant'}}" class="text18"> {{profile.name}}-助教</view>
+          <view wx:elif="{{role=='backup'}}" class="text18"> {{profile.name}}-后台服务</view>
+          <view wx:else class="text18"> {{profile.name}}</view>
+          <view class="textGrey18"> {{profile.time}} </view>
+        </view> 
+          <button class="w15" form-type="submit" open-type="share" style='background:white'>
+            <image class="icon-image-thin3" src="../image/button/share.png" style='padding-top:5px'></image>
+          </button>
+          <view class="w05"/>
+      </view>
+      <view class="itemRow5" style='background:white;height:60px'>
+        <view class="w20"/>
+        <view class="w15 commentTips" bindtap="tapBtnText"  data-toUsrName="{{profile.name}}" data-toUsrId="{{profile.usrId}}" style='position:relative;top:-10px;'>
+          <image class="icon-image-thin3" src="../image/button/comment.png" style='padding-top:5px'></image>
+          <text class='textGreyFont10'> 文字点评 </text>
+        </view> 
+        <view class="w05"/>
+        <view class="w15 commentTips" bindtap="tapBtnRecordShow" data-toUsrName="{{profile.name}}" data-toUsrId="{{profile.usrId}}" style='position:relative;top:-10px;'>
+          <image class="icon-image-thin3" src="../image/button/comment4.png" style='padding-top:5px'></image>
+          <text class='textGreyFont10'> 语音点评 </text>
+        </view> 
+        <view class="w05"/>
+        <view class="w15 commentTips" bindtap="tapFlower" id="{{index}}" data-punchId="{{profile.punchId}}" data-usrId="{{profile.usrId}}" data-name="{{profile.name}}" data-image="{{profile.image}}" style='position:relative;top:-10px;'>
+          <image class="icon-image-thin3" src="../image/button/flower3.png" style='padding-top:5px'></image>
+          <text class='textGreyFont10'> 送花 </text>
+        </view> 
+        <view class="w05"/>
+        <view class="w15 commentTips" bindtap='tapThumbUpPunch' data-punchId="{{profile.punchId}}" style='position:relative;top:-10px;'>
+          <image class="icon-image-thin3" wx:if="{{profile.hasThumb}}" src="../image/button/thumb2.png" style='padding-top:5px;padding-left:1px;'></image>
+          <image class="icon-image-thin3" wx:else src="../image/button/thumb1.png" style='padding-top:5px;padding-left:1px;'></image>
+          <text class='textGreyFont10'>赞 {{profile.thumb}} </text>
+        </view> 
+        <view class="w05"/>
+      </view>
+    </view>
+    <view class="h10-ghostwhite"/>
+    <view wx:for="{{comments}}" wx:for-item="i"> 
+      <template is="comment" data="{{...i}}"/>
+      <view class="h05-ghostwhite"/>
+    </view>
+    <view class="w100">
+      <view class="w80">
+        <text class="textH20"></text>
+        <text class="textGreyFont10"> 如果收到小伙伴的点评，也请到TA的打卡下鼓励鼓励TA吧，缘分来之不易，且行且珍惜哦~ </text>
+        <text class="textH20"></text>
+      </view>
+    </view>
+  </view>
+
+  <block wx:if="{{bottomType==1}}">
+    <view class='w100' style='position:fixed;bottom:0px;' catchlongpress="catchTapEvent">
+      <text class='h20'></text>
+      <bottom-button-punch class="" bindrecordstart="tapBtnRecord" bindrecordend="tapBtnStop" button-disabled="{{bottomButtonDisabled}}">
+      </bottom-button-punch>
+      <text class='h20'></text>
+    </view>
+    <view class='w100'style='position:fixed;bottom:160px;background:transparent;'>
+      <view class='w60' style='border-radius:3px;align-content:center;background:black;opacity:0.7'>
+        <text class="text24" style="padding-top:20px;color:rgb(4,190,1);"> {{toUsrName}} </text>
+        <view class='h20'></view>
+        <!--image wx:if="{{recordTimeShow}}" src="../image/button/loading.gif" style='width:100%;height:100px;background:transparent'> </image-->
+        <view class='w80'>
+          <view wx:if="{{!recordTimeShow}}" class="itemButtonRow2" bindtap='tapBtnRecordHide' style='width:90%;padding-top:6px'>
+            <text class="textMid24"> 取消 </text>
+          </view>
+        </view>
+        <text wx:if="{{recordTimeShow}}" class="text18" style='color:white;background:transparent'>{{recordSecondShow}}"/60"</text>
+        <view class='h20'></view>
+      </view>
+    </view>
+  </block>
+  <block wx:elif="{{bottomType==2}}">
+    <view class="bottom">
+      <view class="wc35">
+        <view class='w10'/>
+        <view class="audioSmall90">
+          <form class="w50" id="{{index}}" bindsubmit="tapBtnPlay" report-submit='true'>
+            <button class="buttonBoxSmall" form-type="submit">
+              <image class="icon-image-small4" src="{{btnSrcPlayPause}}"></image>
+            </button>
+          </form> 
+          <view class='w20'/>
+          <view class="w20">
+            <text class="textH20" wx:if="{{tempRecordSecond>=0}}">{{tempRecordSecond}}"</text>
+          </view>
+        </view>
+      </view>
+      <form class="w25" bindsubmit="tapBtnRecordShow" report-submit='true' data-toUsrName="{{toUsrName}}" data-toUsrId="{{toUsrId}}">
+        <button class="buttonBox1" form-type="submit">
+          <image class="icon-image-middle4" src="{{btnSrcRecord}}"></image>
+        </button> 
+        <text class="text18">重新录音</text>
+        <view class="h25"/>
+      </form>
+      <form class="w20" bindsubmit="tapBtnSend" report-submit='true' >
+        <button class="buttonBox1" form-type="submit">
+          <image class="icon-image-middle4" src="{{btnSrcSend}}"/>
+        </button>
+        <text class="text18">发送</text>
+        <view class="h25"/>
+      </form>
+      <form class="w20" bindsubmit="tapBtnCancel" report-submit='true' >
+        <button class="buttonBox1" form-type="submit">
+          <image class="icon-image-middle4" src="{{btnSrcCancel}}"></image>
+        </button>
+        <text class="text18">取消</text>
+        <view class="h25"/>
+      </form>
+    </view>
+    <view class='w100' style='position:fixed;bottom:100px;background:transparent;'>
+      <view class='w80' style='border-radius:3px;align-content:center;background:black;opacity:0.7;height:fit-content;'>
+        <text class="text24" style="padding-top:20px;color:rgb(4,190,1);"> {{toUsrName}} </text>
+        <view class='h20' style='background:transparent'/>
+        <text class="text20 w90" style="color:white;height:fit-content;"> {{currentText}} </text>
+        <view class='h20' style='background:transparent'/>
+        <text class="textGreyFont10" style="color:white;"> 该功能正在测试中，上述文字仅供参考 </text>
+        <text class="textGreyFont10" style="color:white;"> 腾讯"同声传译"插件提供技术支持 </text>
+        <view class='h20' style='background:transparent'/>
+      </view>
+    </view>
+  </block>
+  <block wx:elif="{{bottomType==3}}">
+    <view class='w100' style='position:fixed;bottom:{{0.4*height}}px;background:transparent;'>
+      <view class='w80' style='border-radius:10px;align-content:center;background:black;opacity:0.7'>
+        <text class="text24" style="padding-top:20px;color:rgb(4,190,1);"> {{toUsrName}} </text>
+        <view class='h20' style='background:transparent;'/>
+        <view class="input3" style='width:84%;'>
+          <input class="" style='color:white' placeholder="请输入文字" bindinput="commentTextInput"/>
+        </view>
+        <view class='h10' style='background:transparent;'/>
+        <text class="textGreyFont12" style='color:white;'>Less is more</text>
+        <text class="textGreyFont12" style='color:white;'>请不要使用特殊字符和表情哦</text>
+        <view class='h20' style='background:transparent;'/>
+        <view class='wc100' style='background:transparent;'>
+          <view class='w50' style='background:transparent;'>
+            <view class="itemButtonRow2" bindtap='tapBtnTextCancel' style='width:90%;padding-top:6px'>
+              <text class="textMid24"> 取消 </text>
+            </view>
+          </view>
+          <view class='w50' style='background:transparent;'>
+            <view class="itemButtonRow2" bindtap='tapBtnTextSend' style='width:90%;padding-top:6px'>
+              <text class="textMid24"> 确定 </text>
+            </view>
+          </view>
+        </view>
+        <view class='h20'/>
+      </view>
+    </view>
+  </block>
+  <button-home imageSrc="../../pages/image/button/home3.png"/>
+</block>
+<block wx:else>
+  <view class="w100-white" style='height:100vh'>
+    <image class='icon-image-small3' src="/image/loading.gif" style='padding-top:40vh'/>
+  </view>
+</block>
+
+<block wx:if="{{showReward}}">
+  <view class='w100' style='height:100vh;background:ghostwhite;position:fixed;top:0px;'>
+    <view class="w100" style='padding-top:25vh;'>
+      <view class="comment" style='width:80%;'>
+        <view class='h20'></view>
+        <view class="wc100">
+          <view class='w30'/>
+          <view class='w40' bindtap='tapOneUsr' data-usrId='{{rewardId}}'>
+            <image class="icon-image-middle1" src="{{rewardImage}}"></image>
+            <view class="h10"></view>
+            <view class="text15"> {{rewardName}} </view>
+          </view>
+          <view class='w30'/>
+        </view>
+        <view class="wc100">
+          <view style="width:100%;">
+            <slider bindchange="slider2change" bindchanging='' step="5" value='{{rewardCount}}' min="5" max="500" block-size="18" id="{{index}}"/>
+            <view class='w100-white'>
+              <text class='textGreyFont14' style='padding-bottom:10px;'> 打赏{{rewardCount}}朵小红花 </text>
+            </view>
+          </view>
+        </view> 
+        <view class='wc100'>
+          <view class='w50'>
+            <view class="itemButtonRow2" bindtap='tapCancelPick' style='width:90%;padding-top:6px'>
+              <text class="textMid24"> 取消 </text>
+            </view>
+          </view>
+          <view class='w50'>
+            <view class="itemButtonRow2" bindtap='tapPick' style='width:90%;padding-top:6px'>
+              <text class="textMid24"> 确定 </text>
+            </view>
+          </view>
+        </view>
+        <view class='h20'></view>
+      </view>
+    </view>
+  </view>
+</block>
+

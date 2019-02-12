@@ -1,0 +1,115 @@
+<!--pages/Everyday/Everyday.wxml-->
+<block wx:if="{{showPage}}">
+  <view class='w100' style='background:white;'>
+    <view class="w100-white" style='padding-top:30px;'>
+      <image class='icon-image-course' src="https://www.abceea.com/static/class/{{date}}/c.jpg" style='width:30vh;height:40vh;border-radius:5px;box-shadow:0px 10px 10px gainsboro;'/>        
+    </view>
+    <view class="w30" bindtap='tapPlayPause'>
+      <image class="icon-image-middle1" src="{{srcPlayPause}}" style='position:relative;top:-25px;'></image>
+      <text style='font-size:12px;color:grey;position:relative;top:-16px;'> 发音讲解 </text>
+    </view>
+    <view class="wc100" style='padding-top:5px;'>
+      <view class="w50">
+        <image style='height:15px;width:15px' src="../image/button/mark.png"/>  
+      </view>  
+    </view>
+    <view class="w50" style='padding-top:5px;padding-bottom:5px;'>
+      <text style='font-size:18px;font-weight:900'>{{content}}</text>  
+    </view> 
+    <view class="wc100" style=''>
+      <view class="w50"/>
+      <view class="w50">
+        <image style='height:15px;width:15px' src="../image/button/mark.png"/>  
+      </view>
+    </view>
+  </view>
+
+  <view class="w100-white" wx:if="{{myPunch!=null}}">
+    <view class="h10"/>
+    <view class="wc90">
+      <view class="w20" wx:if="{{myPunch}}" data-punchId="{{myPunch.punchId}}" bindtap='tapCommentBooking'>
+        <image class="icon-image-small3" style='' src="../image/button/comment2.png"> </image>
+        <text class="textGreyFont10"> 预约点评 </text>
+      </view>
+      <view class='w60'>
+        <view style='border-bottom: 1px solid grey' >
+          <text class='textGreyFont14'>我的打卡</text>
+          <text class='h10'></text>
+        </view>
+        <text class='h20'></text>
+      </view>
+      <view class="w20" wx:if="{{myPunch}}" data-punchId="{{myPunch.punchId}}" bindtap='tapBtnDelete'>
+        <image class="icon-image-small3" style='' src="../image/button/delete2.png"> </image>
+        <text class="textGreyFont10"> 删除打卡 </text>
+      </view>
+    </view>
+    <view class="w90">
+      <view class='h10'/>
+      <card-record width="{{recordWidth}}" item="{{myPunch}}" date="{{date}}" classType="{{classType}}"/>
+      <view class="h10-ghostwhite"/>
+    </view>
+  </view>
+
+  <view class='itemTop' style='padding-top:20px'>
+    <view class="w25" wx:for="{{records}}">
+      <view class='w100-white ' wx:if="{{index == select}}" bindtap='tapPunchTitles' data-data="{{item.data}}" data-title="{{item.title}}" id="{{index}}" style='color:#04BE01;'>
+        <text class='itemSelected' style='width:60%'> {{item.title}} </text>
+      </view>
+      <view class='w100-white ' wx:else  bindtap='tapPunchTitles' data-data="{{item.data}}" data-title="{{item.title}}" id="{{index}}">
+        <text class='itemNormal' style='width:60%'> {{item.title}} </text>
+      </view>
+    </view>
+  </view>
+
+  <view class="h10-ghostwhite"/>
+  <block wx:if="{{punchSize > 0}}">
+    <view class='h05'></view>
+    <view class="w100" wx:for="{{punches}}" wx:for-item="i"> 
+      <card-record width="{{recordWidth}}" item="{{i}}" date="{{date}}" classType="{{classType}}"/>
+      <view class="h10-ghostwhite"/>
+    </view>
+  </block>
+
+  <view class="w100">
+    <view class="w80">
+      <text class="textH20"></text>
+      <text class="textGreyFont10"> 技术支持请联系微信：fengyingdian </text>
+      <text style='height:170px;'></text>
+    </view>
+  </view>
+
+  <view class="w100" animation="{{animation}}" style='position:fixed;bottom:-1000px;border-top:1px solid ghostwhite'>
+    <text class="w20" style='font-size:14px;color:grey;padding-top:15px'> {{leftMinute}}:{{leftSecond}}/{{rightMinute}}:{{rightSecond}} </text>
+    <view class="w100" style='position:relative;top:-15px;background:transparent'> 
+      <view class="h05"/>
+      <view class="wc100">
+        <view class="w01"/> 
+        <view style='width:98%'>
+          <slider bindchange="sliderChange" bindchanging="sliderChanging" block-size="12" step="5" value="{{sliderValue}}"/>
+        </view>
+        <view class="w01"/> 
+      </view>
+    </view> 
+    <view class="wc100" style='position:relative;top:-15px;'>
+      <view class="w33" bindtap='practice' style='position:relative;top:5px;'>
+        <image class="icon-image-thin3"  src="../image/button/practice.png"></image>
+        <text class="text18" style='color:grey;font-size:12px;padding-top:5px'> 视频跟读 </text>
+      </view>
+      <view class="w33" bindtap='tapPunchNew'>
+        <view class="w100-white" style='border:0px solid ghostwhite;border-radius:50px;height:50px;width:120px; background:rgb(34,177,76);box-shadow:0px 10px 10px grey;'>
+          <text style="padding-top:12px;color:white;font-size:16px;font-weight: 900;"> 语音打卡 </text>
+        </view>
+      </view>
+      <view class="w33" bindtap='punchCard' style='position:relative;top:5px;'>
+        <image class="icon-image-thin3" src="../image/button/punch3.png"></image>
+        <text style='color:grey;font-size:12px;padding-top:5px'>打卡图片</text>
+      </view>
+    </view>
+    <view class="h10"/>
+  </view>
+</block>
+<block wx:else>
+  <view class="w100-white" style='height:100vh'>
+    <image class='icon-image-small3' src="/image/loading.gif" style='padding-top:40vh'/>
+  </view>
+</block>

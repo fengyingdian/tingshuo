@@ -1,0 +1,115 @@
+<!--pages/myCommentBook/myCommentBook.wxml-->
+<view wx:if="{{showPage}}" class='w100'>
+  <view style='height:50px'/>
+  <view wx:if="{{titleSelected == 0}}" class="w-white">
+    <block wx:for="{{events1}}"> 
+      <view style='padding: 0 20px 0 20px'>
+        <view class="itemClass" style='height:70px'>
+          <view class="w20" id="{{item.index}}" data-date="{{item.date}}" data-content="{{item.courseContent}}" data-punchid="{{item.punchId}}" style='padding-left:2px;'>
+            <image class='icon-image-small1' src="{{item.usrImage}}"/>
+          </view>
+          <view class="wl60">
+            <text class="textMid18">{{item.usrName}}</text>
+            <text class="textGreyFont12">{{item.time1}}</text>
+          </view>
+          <view class="w20">
+            <view class="wc100">
+              <image class='icon-image-thin3'src="../image/button/flower3.png"/>
+              <text class="textGreyFont18" style='padding-left:5px'>{{item.count}}</text>
+            </view>
+          </view>
+        </view>
+        <view class="w100">
+          <view class="itemCourse" bindtap="tapOnePunch" id="{{item.index}}" data-date="{{item.courseName}}" data-content="{{item.courseContent}}" data-punchid="{{item.punchId}}" style='background:ghostwhite;height:100px'>
+            <view class="w20" style='width:25%'>
+              <image class='icon-image-cover' src="https://www.abceea.com/static/class/{{item.courseName}}/c.jpg" style='height:70px;width:50px'/>
+            </view>
+            <view class="wl70" style=''>
+              <text class="textMid25">{{item.courseTitle}}：{{item.courseName}} </text>
+              <text class="textGrey36" style='padding-top:2px'> {{item.courseContent}} </text>
+            </view>
+          </view>
+        </view>
+        <view class="h10"/>
+        <view class="wc100">
+          <view class="w90"/>
+          <view class="w20" style='background:ghostwhite;border-radius:30px;height:30px;'>
+            <text class="textGreyFont12"style="padding-top:6px;">{{item.eventStatus}}</text>
+          </view>
+        </view>
+        <view class="h20"/>
+      </view>
+      <view class="h10-ghostwhite"/>
+    </block>
+  </view>
+  <view wx:elif="{{titleSelected == 1}}" class="w-white">
+    <block wx:for="{{events2}}">
+      <view style='padding: 0 20px 0 20px'>  
+        <view class="itemClass" style='height:70px'>
+          <view class="w20" id="{{item.index}}" data-date="{{item.date}}" data-content="{{item.courseContent}}" data-punchid="{{item.punchId}}" style='padding-left:2px;'>
+            <image class='icon-image-small1' src="{{item.usrImage}}"/>
+          </view>
+          <view class="wl60">
+            <text class="textMid18">{{item.usrName}}</text>
+            <text class="textGreyFont12">{{item.time1}}</text>
+          </view>
+          <view class="w20">
+            <view class="wc100">
+              <image class='icon-image-thin3'src="../image/button/flower3.png"/>
+              <text class="textGreyFont18" style='padding-left:5px'>{{item.count}}</text>
+            </view>
+          </view>
+        </view>
+        <view class="w100">
+          <view class="itemCourse" bindtap="tapOnePunch" id="{{item.index}}" data-date="{{item.courseName}}" data-content="{{item.courseContent}}" data-punchid="{{item.punchId}}" style='background:ghostwhite;height:100px'>
+            <view class="w20" style='width:25%'>
+              <image class='icon-image-cover' src="https://www.abceea.com/static/class/{{item.courseName}}/c.jpg" style='height:70px;width:50px'/>
+            </view>
+            <view class="wl70" style=''>
+              <text class="textMid25">{{item.courseTitle}}：{{item.courseName}} </text>
+              <text class="textGrey36" style='padding-top:2px'> {{item.courseContent}} </text>
+            </view>
+          </view>
+        </view>
+        <block wx:if="{{item.eventCode == 30000}}">
+          <view class="h20"/>
+          <view class="wc100">
+            <view class="w100" style='border:1px solid grey;border-radius:30px;height:40px;width:45%;background:white;' bindtap='tapRefuse' data-punchId="{{item.punchId}}" data-usrId="{{item.usrId}}" data-index="{{index}}" data-count="{{item.count}}">
+              <text class="textGreyFont14"style="padding-top:9px;">拒绝</text>
+            </view>
+            <view class="w100" style='width:10%'/>
+            <view class="w100" style='border:1px solid #04BE01;border-radius:30px;height:40px;width:45%;background:#04BE01;' bindtap='tapAccept' data-punchId="{{item.punchId}}" data-usrId="{{item.usrId}}" data-index="{{index}}" data-count="{{item.count}}">
+              <text class="textGreyFont14" style="padding-top:9px;color:white;">接受</text>
+            </view>
+          </view>
+        </block>
+        <block wx:else>
+          <view class="h10"/>
+          <view class="wc100">
+            <view class="w90"/>
+            <view class="w20" style='background:ghostwhite;border-radius:30px;height:30px;'>
+              <text class="textGreyFont12"style="padding-top:6px;">{{item.eventStatus}}</text>
+            </view>
+          </view>
+        </block>
+        <view class="h20"/>
+      </view>
+      <view class="h10-ghostwhite"/>
+    </block>
+  </view>
+  <view class='itemTop' style='position:fixed;top:0px;'>
+    <view class="w50" wx:for="{{topTitiles}}" style='border-left:1px solid ghostwhite;border-right:1px solid ghostwhite'>
+      <view class='w100-white' wx:if="{{index == titleSelected}}" bindtap='tapTopTitle' id="{{index}}" style='color:#04BE01;padding-top:10px;padding-bottom:10px'>
+        <text class='textMid20'> {{item.name}} </text>
+      </view>
+      <view class='w100-white' wx:else bindtap='tapTopTitle' id="{{index}}" style='padding-top:10px;padding-bottom:10px'>
+        <text class='textMid20'> {{item.name}} </text>
+      </view>
+    </view>
+  </view>
+</view>
+<block wx:else>
+  <view class="w100-white" style='height:100vh'>
+    <image class='icon-image-small3' src="/image/loading.gif" style='padding-top:40vh'/>
+  </view>
+</block>

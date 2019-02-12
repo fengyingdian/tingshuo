@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "canvas-loading": "/myComponents/canvas-loading/index"
+  }
+}

@@ -1,0 +1,4 @@
+<!--myComponents/button-home-text/index.wxml-->
+<view class="w20" style='position:fixed;bottom:30%;right:20px;background:transparent;' bindtap="onHome">
+  <text animation="{{animationData}}" style='width:40px;height:20px;border:2px solid ghostwhite;box-shadow:0px 0px 10px grey;font-size:12px;border-radius:5px;opacity:0.7'> HOME </text>
+</view>

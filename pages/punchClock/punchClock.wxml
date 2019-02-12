@@ -1,0 +1,139 @@
+<!--pages/punchClock/punchClock.wxml-->
+<template name="record">
+
+</template>
+
+<block wx:if="{{showPage}}">
+  <view class='w100' style='background:white;'>
+    <view class="w100-white" style='padding-top:30px;'>
+      <image class='icon-image-course' src="https://www.abceea.com/static/class/{{date}}/c.jpg" style='width:30vh;height:40vh;border-radius:5px;box-shadow:0px 10px 10px gainsboro;'/>        
+    </view>
+    <block wx:if="{{bottomType==2}}">
+      <view class="w30" bindtap='tapBtnPlay'>
+        <image class="icon-image-middle1" src="{{btnSrcPlayPause}}" style='position:relative;top:-25px;'></image>
+        <text style='font-size:12px;color:grey;position:relative;top:-16px;' wx:if="{{tempRecordSecond>0}}">{{tempRecordSecond}}"</text>
+        <text wx:else style='font-size:12px;color:grey;position:relative;top:-16px;'> 试听 </text>
+      </view>
+    </block>
+    <block wx:else>
+      <view style='height:20px;'> </view>
+    </block>
+    <view class="wc100" style='padding-top:5px;'>
+      <view class="w50">
+        <image style='height:15px;width:15px' src="../image/button/mark.png"/>  
+      </view>  
+    </view>
+    <view class="w50" style='padding-top:5px;padding-bottom:5px;'>
+      <text style='font-size:18px;font-weight:900'>{{content}}</text>  
+    </view> 
+    <view class="wc100" style=''>
+      <view class="w50"/>
+      <view class="w50">
+        <image style='height:15px;width:15px' src="../image/button/mark.png"/>  
+      </view>
+    </view>
+    <block wx:if="{{bottomType==2}}">
+      <view style='height:20px;'/>
+      <view class='w100' style='border:1px solid ghostwhite;border-radius:40px;height:40px;width:220px;background:rgb(47,68,89);' bindtap='tapAiReport'>
+        <view class='wc100'> 
+          <image class="icon-image-small3" src="../image/button/robot.png" style='padding:10px 0px 10px 58px;height:20px;width:20px;'></image>
+          <text style="padding-top:2px;padding-left:10px;color:white;font-size:14px"> AI老师测评 </text>
+        </view>
+      </view>
+      <view style='height:20px;'/>
+      <view class='w100' style='border:1px solid ghostwhite;border-radius:40px;height:40px;width:220px;background:rgb(34,177,76);' bindtap='tapBtnSend'>
+        <view class='wc100'> 
+          <image class="icon-image-small3" src="../image/button/sendGreen2.png" style='padding:10px 0px 10px 65px;height:20px;width:20px;'></image>
+          <text style="padding-top:2px;padding-left:10px;color:white;font-size:14px"> 发布打卡 </text>
+        </view>
+      </view>
+    </block>
+  </view>
+
+  <view class="w100-white" wx:if="{{myPunch!=null}}">
+    <view class="h10"/>
+    <view class="wc90">
+      <view class="w20" wx:if="{{myPunch}}" data-punchId="{{myPunch.punchId}}" bindtap='tapCommentBooking'>
+        <image class="icon-image-small3" style='' src="../image/button/comment2.png"> </image>
+        <text class="textGreyFont10"> 预约点评 </text>
+      </view>
+      <view class='w60'>
+        <view style='border-bottom: 1px solid grey' >
+          <text class='textGreyFont14'>我的打卡</text>
+          <text class='h10'></text>
+        </view>
+        <text class='h20'></text>
+      </view>
+      <view class="w20" wx:if="{{myPunch}}" data-punchId="{{myPunch.punchId}}" bindtap='tapBtnDelete'>
+        <image class="icon-image-small3" style='' src="../image/button/delete2.png"> </image>
+        <text class="textGreyFont10"> 删除打卡 </text>
+      </view>
+    </view>
+    <view class="w90">
+      <view class='h10'/>
+      <template is="record" data="{{...myPunch}}"/>
+      <view class="h10-ghostwhite"/>
+    </view>
+  </view>
+
+  <view class='itemTop' style='padding-top:20px'>
+    <view class="w25" wx:for="{{records}}">
+      <view class='w100-white ' wx:if="{{index == select}}" bindtap='tapPunchTitles' data-data="{{item.data}}" data-title="{{item.title}}" id="{{index}}" style='color:#04BE01;'>
+        <text class='itemSelected' style='width:60%'> {{item.title}} </text>
+      </view>
+      <view class='w100-white ' wx:else  bindtap='tapPunchTitles' data-data="{{item.data}}" data-title="{{item.title}}" id="{{index}}">
+        <text class='itemNormal' style='width:60%'> {{item.title}} </text>
+      </view>
+    </view>
+  </view>
+
+  <view class="h10-ghostwhite"/>
+  <view>
+    <view wx:if="{{punchSize > 0}}">
+      <view class='h05'></view>
+      <view class="w100" wx:for="{{punches}}" wx:for-item="i"> 
+        <view class="w90">
+          <template is="record" data="{{...i}}"/>
+          <view class="h10-ghostwhite"/>
+        </view>
+      </view>
+    </view>
+    <view class="w100">
+      <view class="w80">
+        <text class="textH20"></text>
+        <text class="textGreyFont10"> 如果收到小伙伴的点评，也请到TA的打卡下鼓励鼓励TA吧，缘分来之不易，且行且珍惜哦~ </text>
+        <text style='height:140px;'></text>
+      </view>
+    </view>
+  </view>
+
+  <view class="bottom">
+    <view class='w100' style='position:fixed;bottom:0px;' catchlongpress="catchTapEvent">
+      <text class='h20'></text>
+      <bottom-button-punch class="" bindrecordstart="tapBtnRecord" bindrecordend="tapBtnStop" data-toUsrName="{{profile.name}}" data-toUsrId="{{profile.usrId}}" button-disabled="{{bottomButtonDisabled}}">
+      </bottom-button-punch>
+      <text class='h20'></text>
+    </view>
+    <block wx:if="{{bottomType==1}}">
+      <view class='w100' wx:if="{{recordTimeShow}}" style='position:fixed;bottom:150px;background:transparent;'>
+        <view class='w30' style='border-radius:3px;align-content:center;background:black;opacity:0.7'>
+          <view class='h20'></view>
+          <text class='text18' style='color:white;background:transparent'>{{recordSecondShow}}"/20"</text>
+          <view class='h20'></view>
+        </view>
+      </view>
+    </block>
+  </view>
+</block>
+<block wx:else>
+  <view class="w100-white" style='height:100vh'>
+    <image class='icon-image-small3' src="/image/loading.gif" style='padding-top:40vh'/>
+  </view>
+</block>
+
+<block wx:if="{{showAiReportLoading}}">
+  <view class="w100-white" style='height:100vh;position:fixed;top:0px'>
+    <image class='icon-image-small3' src="/image/loading.gif" style='padding-top:40vh'/>
+    <text class="text18" style='padding-top:20px;color:grey'>正在上传音频</text>
+  </view>
+</block>

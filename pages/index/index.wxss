@@ -1,0 +1,32 @@
+/**course.wxss**/
+@import "../../lib/weui.wxss";
+@import "../../lib/myui.wxss";
+@import "../../lib/audio.wxss";
+@import "../../lib/text.wxss";
+
+.image-group {
+  display: flex;
+  white-space: nowrap;
+  margin-bottom: 0px;
+  background: white;
+}
+
+.image-group view {
+  display: inline-block;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  margin-right:0px;
+  background: white;
+}
+
+button::after{
+  border: 0;
+}
+
+.icon-image-course {
+  width: 120px;
+  height: 170px;
+  border-radius: 5px;
+  align-content: center;
+  border: 0px solid snow;
+}

@@ -1,0 +1,8 @@
+<!--myComponents/button-audio/index.wxml-->
+<view class="w100" style='background:transparent;' bindtap="onPlay">
+  <image animation="{{animationData}}" class="icon-image-small4" src="{{imageSrc}}" style='width:50px;height:50px;border:2px solid white;box-shadow:0px 0px 5px grey;'></image>
+  <image wx:if="{{status==0}}" class="icon-image-small4" src="../../pages/image/button/play.png" style='width:50px;height:50px;position:relative;top:-52px;opacity:0.2'></image>
+  <image wx:else class="icon-image-small4" src="../../pages/image/button/stop.png" style='width:50px;height:50px;position:relative;top:-52px;opacity:0.2'></image>
+  <text wx:if="{{status==0}}" style='color:grey;font-size:12px;padding-top:10px;position:relative;top:-52px;'>点击试听</text>
+  <text wx:else style='color:grey;font-size:12px;padding-top:10px;position:relative;top:-52px;'>点击停止</text>
+</view>

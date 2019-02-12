@@ -1,0 +1,51 @@
+<!--pages/usrInfo/usrInfo.wxml-->
+<block wx:if="{{showPage}}">
+  <view class="w100">
+    <view style='height:140px'/>
+    <view class="h10-ghostwhite"/>
+    <view class='w100-white' wx:for="{{setting2}}">
+      <view class="itemClass" bindtap='{{item.tapFun}}'>
+        <view class="w20">
+          <image class='icon-image-thin3' src="{{item.image}}"/>
+        </view>
+        <view class="wl65">
+          <text class="textMid20"> {{item.name}} </text>
+        </view>
+        <view class="w15">
+          <image class='icon-image-thin3' src="../image/button/more.png"/>
+        </view>
+      </view>
+    </view>
+    <view class="w100" style='background:ghostwhite;position:fixed;top:0px;'>
+      <view class="h10-ghostwhite"/>
+      <view  class="itemRow2" style='height:130px'>
+        <view class="w100-white">
+          <view class="w10-white">
+            <view class="wc100">
+              <image class='icon-image-middle1' src="{{userInfo.imageSrc}}"/>
+              <view style='padding-left:20px'/>
+              <image class='icon-image-thin3' src="../image/button/exchange.png"/>
+              <view style='padding-right:20px'/>
+              <image class='icon-image-middle1' src="{{hostInfo[7]}}"/>
+            </view>
+          </view>
+          <view class="w10-white" style='padding-top:10px'>
+            <view  class="wc100" style='height:30px'>
+              <text class="textMid24" style='padding-right:3px'> hi, </text>
+              <text class="text24" style="color:rgb(255,127,39)">  {{userInfo.nickName}}</text>
+              <text class="textMid24" style="padding-right:3px;"> , welcome to</text>
+              <text class="text24" style="color:rgb(4, 190, 1);"> {{hostInfo[1]}}</text>
+              <text class="textMid24"> 's home! </text>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class="h10-ghostwhite"/>
+    </view>
+  </view>
+</block>
+<block wx:else>
+  <view class="w100-white" style='height:100vh'>
+    <image class='icon-image-small3' src="/image/loading.gif" style='padding-top:40vh'/>
+  </view>
+</block>

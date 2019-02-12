@@ -1,0 +1,83 @@
+<!--pages/createClass/createClass.wxml-->
+<view class="h20-ghostwhite"/>
+<view class="w100">
+  <view style='border-bottom: 1px solid grey'>
+    <text class='text20'>创建我的班级</text>
+    <text class='h10'></text>
+  </view>
+</view>
+<view class="h20-ghostwhite"/>
+<view class="w100-white" style=''>
+  <view class="wl80">
+    <text class='textMid20' style='margin-top:10px;'> 班级名称 </text>
+    <view class="input3" style='margin-top:10px;margin-bottom:10px;'>
+      <input class="" auto-focus value="{{name}}" placeholder="输入班级名称" bindinput="codeInput"/>
+    </view>
+  </view>
+</view>
+<view class="h05-ghostwhite"/>
+<view class="w100-white" style=''>
+  <view class="wl80">
+    <text class='textMid20' style='margin-top:10px;'> 班级头像 </text>
+    <image class='icon-image-small3'style='margin-top:10px;margin-bottom:10px;' bindtap='addClassImage' src="{{tempClassImageSrc}}"/>
+  </view>
+</view>
+<view class="h05-ghostwhite"/>
+<view class="w100-white" style=''>
+  <view class="wl80">
+    <text class='textMid20' style='margin-top:10px;'> 选择口音 </text>
+    <radio-group class="radio-group" bindchange="radioChangeAccent" style='margin-top:10px;margin-bottom:10px;font-size:14px;'>
+      <label class="radio" wx:for="{{accents}}">
+        <radio value="{{item.value}}" checked="{{item.checked=='true'}}"/>{{item.name}}
+        <view class='h10'/>
+      </label>
+    </radio-group>
+  </view>
+</view>
+<view class="h05-ghostwhite"/>
+<view class="w100-white" style=''>
+  <view class="wl80">
+    <text class='textMid20' style='margin-top:10px;'> 准入原则 </text>
+    <radio-group class="radio-group" bindchange="radioChangeAdmittance" style='margin-top:10px;margin-bottom:10px;font-size:14px;'>
+      <label class="radio" wx:for="{{admittances}}">
+        <radio value="{{item.value}}" checked="{{item.checked=='true'}}"/>{{item.name}}
+        <view class='h10'/>
+      </label>
+    </radio-group>
+  </view>
+</view>
+<view class="h05-ghostwhite"/>
+<view class="w100-white" style=''>
+  <view class="wl80">
+    <text class='textMid20' style='margin-top:10px;'> 一周打卡至少几次（{{punchLimit}}） </text>
+    <view class='wc90' style='margin-top:10px;margin-bottom:10px;font-size:14px;'>
+      <text class='wl10' style='font-size:14px;'>0</text>
+      <view style="width:80%;">
+        <slider bindchange="slider2changePunch" bindchanging='slider2changingPunch' step="1" value='{{punchLimit}}' min="0" max="7"/>
+      </view>
+      <text class='w10' style='font-size:14px;padding-top:10px;'>7</text>
+    </view>
+  </view>
+</view>
+<view class="h05-ghostwhite"/>
+<view class="w100-white" style=''>
+  <view class="wl80">
+    <text class='textMid20' style='margin-top:10px;'> 人数限制（{{memberLimit}}） </text>
+    <text class='textGreyFont12'> 目前班级人数最多为100人; </text>
+    <text class='textGreyFont12'> 后期会根据班级创建者的等级调整最大上限; </text>
+    <view class='wc90' style='margin-top:10px;margin-bottom:10px;font-size:14px;'>
+      <text class='wl10' style='font-size:14px;'>10</text>
+      <view style="width:80%;">
+        <slider bindchange="slider2changeMember" bindchanging='slider2changingMember' step="5" value='{{memberLimit}}' min="10" max="100"/>
+      </view>
+      <text class='w10' style='font-size:14px;'>100</text>
+    </view>
+  </view>
+</view>
+<view class="h20-ghostwhite"/>
+<view class="w100" style=''>
+  <view class="w50">
+    <button class="itemButtonRow textMid24 w80" bindtap='tapConfirm' style='height:40px;'> 确定    </button>
+  </view>
+</view>
+<view class="h20-ghostwhite"/>

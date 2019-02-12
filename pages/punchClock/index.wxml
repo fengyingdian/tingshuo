@@ -1,0 +1,26 @@
+<!--pages/punchClock/index.wxml-->
+<view wx:if="{{showPage}}" class='w100' animation="{{animationPage}}" style='position:relative;z-index:1;background:white;height:800px'>
+  <view class='w60' style='padding-top:20px'>
+    <text style='color:black;font-size:10px;font-weight:900;'> {{content}} </text>
+  </view>
+  <view wx:if="{{showPlay}}" class='w20' style='position:fixed;top:20px;right:10px;z-index:2;background:transparent' animation="{{animationRocket}}">
+    <canvas-rocket-aireport bindgetReport='getReport' binduploadFile='uploadFile' binduploadFinished='uploadFinished' style="background:transparent" animation="{{animationRocket}}" rock="{{rock}}" audioSrc="{{audioSrc}}" date="{{date}}" courseId="{{courseId}}"/>
+  </view>
+  <canvas-time-record bindstart="tapStart" bindstop="tapStop" lastingTime="{{lastingTime}}"/>
+  <view wx:if="{{showPlay}}" class='w100' animation="{{animationData}}" style='background:transparent;'>
+    <button-audio audioSrc="{{audioSrc}}" audioTitle="{{content}}" imageSrc="{{imageSrc}}" status="{{status}}"/>
+  </view>
+  <view wx:if="{{showPlay}}" animation="{{animationConfirm}}" class="w100" style='background:ghostwhite;height:100px;position:fixed;bottom:0px;'>
+    <view style='height:22px'/>
+    <button-confirm bindtap="tapConfirm" />
+  </view>
+  <view wx:if="{{showPlay==false}}" style="position:fixed;bottom:40px">
+    <text wx:if="{{rock==false}}" style='color:grey;font-size:16px;'> 点击 START 开始录音 </text>
+    <text wx:else style='color:grey;font-size:16px;'> 点击 STOP 结束录音 </text>
+  </view>
+  <view style='height:30px'/>
+</view>
+<view wx:else class="w100-white" style='height:100vh;position:fixed;top:0px'>
+  <canvas-rocket/>
+</view>
+

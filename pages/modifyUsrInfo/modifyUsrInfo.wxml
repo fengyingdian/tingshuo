@@ -1,0 +1,25 @@
+<!--pages/modifyUsrInfo/modifyUsrInfo.wxml-->
+<view class='w100-white'>
+  <view class="h30"/>
+  <view class='w80'>
+    <text class="text20">修改昵称</text>
+    <text class="h20"></text>
+    <text class="textGreyFont14">Less is more</text>
+    <text class="textGreyFont14">请不要使用特殊字符和表情哦</text>
+    <text class="h20"></text>
+  </view>
+</view>
+<view class="w100-white">
+    <view class="w80">
+      <view class="input3" style='margin-top:10px;margin-bottom:15px;'>
+        <input class="" auto-focus value="{{nickName}}" placeholder="{{nickName}}" bindinput="codeInput"/>
+      </view>
+    </view>
+</view>
+<view class="h20-ghostwhite"/>
+<view class="w100">
+  <button class="itemButtonRow" bindtap='tapConfirm'>
+    <text class="textMid24">确定</text>
+  </button>
+</view>
+<view class="h20-ghostwhite"/>

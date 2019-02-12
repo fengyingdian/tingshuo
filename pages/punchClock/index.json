@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "canvas-time-record": "/myComponents/canvas-time-record/index",
+    "button-audio": "/myComponents/button-audio/index",
+    "button-confirm": "/myComponents/button-confirm/index",
+    "canvas-rocket": "/myComponents/canvas-rocket/index",
+    "canvas-rocket-aireport": "/myComponents/canvas-rocket-aireport/index"
+  }
+}

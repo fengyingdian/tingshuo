@@ -1,0 +1,74 @@
+<!--pages/classInfo/classInfo.wxml-->
+<view class="h20-ghostwhite"/>
+<view class="w100">
+  <view style='border-bottom: 1px solid grey'>
+    <text class='text20'>班级信息</text>
+    <text class='h10'></text>
+  </view>
+</view>
+<view class="h20-ghostwhite"/>
+<view class="w-white" style="padding: 0 20px 0 20px">
+  <view class="itemClass" style=''>
+    <view class="wl80">
+      <text class='textMid20'>班级头像</text>
+    </view>
+    <view class="w20">
+      <image class='icon-image-small3' src="{{tempClassImageSrc}}"/>
+    </view>
+  </view>
+  <view class="itemClass" style=''>
+    <view class="wl80">
+      <text class='textMid20'>班级名称</text>
+    </view>
+    <view class="w20">
+      <text class='textGreyFont14'>{{name}}</text>
+    </view>
+  </view>
+  <view class="itemClass" style=''>
+    <view class="wl80">
+      <text class='textMid20'>班级编号</text>
+    </view>
+    <view class="w20">
+      <text class='textGreyFont14'>{{classId}}</text>
+    </view>
+  </view>
+  <view class="itemClass" style=''>
+    <view class="wl80">
+      <text class='textMid20'>地区口音</text>
+    </view>
+    <view class="w20">
+      <text class='textGreyFont14'>{{accent}}</text>
+    </view>
+  </view>
+  <view class="itemClass">
+    <view class="wl80">
+      <text class='textMid20'>准入原则</text>
+    </view>
+    <view class="w20">
+      <text class='textGreyFont14'>{{admittance}}</text>
+    </view>
+  </view>
+  <view class="itemClass" style=''>
+    <view class="wl80">
+      <text class='textMid20'>最少打卡次数（一周内）</text>
+    </view>
+    <view class="w20">
+      <text class='textGreyFont14'>{{punchLimit}}</text>
+    </view>
+  </view>
+  <view class="itemClass" style=''>
+    <view class="wl80">
+      <text class='textMid20'>班级人数</text>
+    </view>
+    <view class="w20">
+      <text class='textGreyFont14'>{{memberCount}}/{{memberLimit}}</text>
+    </view>
+  </view>
+</view>
+<view class="h20-ghostwhite"/>
+<view class="w100" style=''>
+  <view class="w50">
+    <button class="itemButtonRow textMid24 w80" bindtap='tapConfirm' style='height:40px;'> 申请加入 </button>
+  </view>
+</view>
+<view class="h20-ghostwhite"/>

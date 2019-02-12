@@ -1,0 +1,226 @@
+<!--pages/oneClass/oneClass.wxml-->
+<view wx:if="{{showPage}}" class='w-white'>
+  <view wx:if="{{titleSelected==0}}">
+    <view style='height: 100px'/>
+    <picker mode="date" value="{{date}}" start="2015-09-01" end="2030-09-01" bindchange="bindDateChange">
+      <view class="itemClass" style="position:fixed;top:51px;">
+        <view class="w100-white">
+          <text class="textGreyFont14"> 选择日期 {{date}} </text>
+        </view>
+      </view>
+    </picker>
+    <view class='h10-ghostwhite'/>
+    <view class="w100" wx:if="{{punchList == null}}">
+      <text class="textGreyFont14"> {{showTips}} </text>
+    </view>
+    <view class="w100" wx:for="{{punchList}}">
+      <view class="itemTitle" style="height:70px;">
+        <text class="text20" style="color:black;padding-top:5px;padding-bottom:5px;border-bottom:1px solid grey;background:yellow; width:100%">每日一句</text>
+        <text class="textMid18" style="padding-top:5px;color:grey;">{{item.courseData[1]}}</text>
+      </view>
+      <view class='h10-ghostwhite'/>
+      <view class="w100" wx:for="{{item.punchData}}" wx:for-item="item2" wx:for-index="idx"> 
+        <view class="w90">
+          <view class="comment" data-punchId="{{item2.punchId}}" data-usrId="{{item2.usrId}}" data-name="{{item2.name}}" data-time="{{item2.time}}" data-thumb="{{item2.thumb}}" data-image="{{item2.image}}" data-role="{{item2.role}}" data-date="{{item.courseData[1]}}" bindtap="tapRecord">
+            <view class="itemRow4">
+              <view class="w20">
+                <image class="icon-image-usr" src="{{item2.image}}"></image>
+              </view>
+              <view class="wl60">
+                <view class="text18"> {{item2.name}}</view>
+                <view class="textGrey18"> {{item2.time}} </view>
+              </view>
+              <view class="w20">
+                <view class="text18"> #{{idx+1}} </view>
+                <view class="textGrey18"> </view>
+              </view>
+            </view>
+          </view>
+        </view>
+        <view class='h10-ghostwhite'/>
+      </view>
+      <view class='h10-ghostwhite'/>
+    </view> 
+  </view>
+  <view wx:if="{{titleSelected==1}}">
+    <view style='height: 50px'/>
+    <view class="w-white">
+      <view class="itemClass" bindtap="tapAddCourse">
+        <view class="w20">
+          <image class='icon-image-small3' src="../image/button/add.png"/>
+        </view>
+        <view class="wl80">
+          <text class="textMid20">添加课件 </text>
+        </view>
+      </view>
+    </view>
+    <view class='h05-ghostwhite'></view>
+    <view wx:if="{{courseDatas}}" class="w-white">
+      <view wx:for="{{courseDatas}}" style="padding: 0 20px 0 20px"> 
+        <view class="itemClass">
+          <view class="wl80">
+            <text class="textMid20">{{item.courseData[18]}}</text>
+          </view>
+        </view>
+        <view class="itemCourse">
+          <view class="w20" bindtap="tapOneCourse" data-date="{{item.courseData[1]}}" >
+            <view class='h20'/>
+            <image class='icon-image-cover' src="https://www.abceea.com/static/class/{{item.courseData[1]}}/c.jpg"/>
+            <view class='h20'/>
+          </view>
+          <view class="wl70" style='padding: 0 0 0 20px '>
+            <view class='wc100'>
+              <text class="textMid30 wl70"> {{item.courseData[1]}} </text>
+              <view class="w30" id="{{index}}" data-id="{{item.courseData[20]}}" data-name="{{item.courseData[1]}}" data-image="{{item.courseData[3]}}" data-content="{{item[2]}}" bindtap='tapDeleteCourse'>
+                <image class='icon-image-small3' src="../image/button/delete.png"/>
+              </view>
+            </view>
+            <text class="textGrey60"> {{item.courseData[2]}} </text>
+          </view>
+        </view>
+        <view class="h01-ghostwhite"/>
+      </view>
+    </view>
+  </view>
+  <view wx:if="{{titleSelected==2}}">
+    <view style='height: 50px'/>
+    <view class="w-white" style="padding: 0 20px 0 20px">
+      <view class="itemClass" style=''>
+        <view class="wl80">
+          <text class='textMid20'>班级头像</text>
+        </view>
+        <view class="w20">
+          <image class='icon-image-small3' src="{{tempClassImageSrc}}"/>
+        </view>
+      </view>
+      <view class="itemClass" style=''>
+        <view class="wl80">
+          <text class='textMid20'>班级名称</text>
+        </view>
+        <view class="w20">
+          <text class='textGreyFont14'>{{name}}</text>
+        </view>
+      </view>
+      <view class="itemClass" style=''>
+        <view class="wl80">
+          <text class='textMid20'>班级编号</text>
+        </view>
+        <view class="w20">
+          <text class='textGreyFont14'>{{classId}}</text>
+        </view>
+      </view>
+      <view class="itemClass" style=''>
+        <view class="wl80">
+          <text class='textMid20'>地区口音</text>
+        </view>
+        <view class="w20">
+          <text class='textGreyFont14'>{{accent}}</text>
+        </view>
+      </view>
+      <view class="itemClass">
+        <view class="wl80">
+          <text class='textMid20'>准入原则</text>
+        </view>
+        <view class="w20">
+          <text class='textGreyFont14'>{{admittance}}</text>
+        </view>
+      </view>
+      <view class="itemClass" style=''>
+        <view class="wl80">
+          <text class='textMid20'>最少打卡次数（一周内）</text>
+        </view>
+        <view class="w20">
+          <text class='textGreyFont14'>{{punchLimit}}</text>
+        </view>
+      </view>
+      <view class="itemClass" style=''>
+        <view class="wl80">
+          <text class='textMid20'>班级人数</text>
+        </view>
+        <view class="w20">
+          <text class='textGreyFont14'>{{memberCount}}/{{memberLimit}}</text>
+        </view>
+      </view>
+    </view>
+    <view class="h05-ghostwhite"/>
+    <view class='w100-white' wx:for="{{setting}}">
+      <view class="itemClass" bindtap='{{item.tap}}'>
+        <view class="w20">
+          <image class='icon-image-thin3' src="{{item.image}}"/>
+        </view>
+        <view class="wl65">
+          <text class="textMid20"> {{item.name}} </text>
+        </view>
+        <view class="w15">
+          <image class='icon-image-thin3' src="../image/button/more.png"/>
+        </view>
+      </view>
+    </view>
+    <view class="h20-ghostwhite" />
+    <button wx:if="{{usrInfo[4]==9}}" class="itemButtonRow" bindtap='tapDeleteClass' data-type='secretary'>
+      <text class="textMid24"> 解散班级 </text>
+    </button>
+    <button wx:else class="itemButtonRow" bindtap='tapQuitClass' data-type='secretary'>
+      <text class="textMid24"> 退出班级 </text>
+    </button>
+    <view class="h20-ghostwhite"/>
+  </view>
+  <view wx:if="{{titleSelected==3}}">
+    <view style='height: 101px'/>
+    <view wx:if="{{members}}" class="w-white">
+      <view wx:for="{{members}}" style="padding: 0 10px 0 20px"> 
+        <view class="itemClass" id="{{item[0]}}" style='height:60px'>
+          <view class="w20">
+            <image class='icon-image-usr' src="{{item[13]}}"/>
+          </view>
+          <view class="wl60">
+            <text class="textMid20"> {{item[7]}} </text>
+            <text class="textGreyFont14"> #{{item[2]}} </text>
+          </view>
+          <view class="w20" wx:if="{{memberTitleSelected==0}}"  id="{{item[0]}}" data-level= "{{item[4]}}" bindtap='tapGetOutMember'>
+            <image class='icon-image-small3' src="../image/button/delete.png"/>
+            <text class="textGreyFont10"> 点击淘汰 </text>
+          </view>
+          <view class="w20" wx:elif="{{memberTitleSelected==1}}" id="{{item[0]}}" data-level= "{{item[4]}}" bindtap='tapGetInMember'>
+            <image class='icon-image-small3' src="../image/button/select3.png"/>
+            <text class="textGreyFont10"> 点击通过 </text>
+          </view>
+         <view class="w20" wx:elif="{{memberTitleSelected==2}}" id="{{item[0]}}" data-level= "{{item[4]}}" bindtap='tapGetInMember'>
+            <image class='icon-image-small3' src="../image/button/select3.png"/>
+            <text class="textGreyFont10"> 点击拉回 </text>
+          </view>
+        </view>
+      </view>
+      <view class='h10-ghostwhite'></view>
+    </view>
+    <view class='itemTop' style='position:fixed;top:51px;'>
+      <view class="w33" wx:for="{{topMemberTitiles}}" style='border-left:1px solid ghostwhite;border-right:1px solid ghostwhite'>
+        <view class='w100-white' wx:if="{{index == memberTitleSelected}}" bindtap='tapTopMemberTitle' id="{{index}}" style='color:#04BE01;padding-top:10px;padding-bottom:10px'>
+          <text class='textMid20'> {{item.name}} </text>
+        </view>
+        <view class='w100-white' wx:else bindtap='tapTopMemberTitle' id="{{index}}" style='padding-top:10px;padding-bottom:10px'>
+          <text class='textMid20'> {{item.name}} </text>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class='itemTop' style='position:fixed;top:0px;'>
+    <view class="w25" wx:for="{{topTitles}}">
+      <view class='w100-white' wx:if="{{index == titleSelected}}" bindtap='tapTopTitle' id="{{index}}"style='color:#04BE01;'>
+        <text class='textMid20'> {{item.name}} </text>
+        <view style='height:5px'></view>
+        <view class='itemSelectedBottom2'/>
+      </view>
+      <view class='w100-white' wx:else bindtap='tapTopTitle' id="{{index}}">
+        <text class='textMid20'> {{item.name}} </text>
+        <view style='height:8px'/>
+      </view>
+    </view>
+  </view>
+  <button-home imageSrc="../../pages/image/button/home3.png"/>
+</view>
+<block wx:else>
+  <view class="w100-white" style='height:100vh'>
+    <canvas-loading /> 
+  </view>
+</block>

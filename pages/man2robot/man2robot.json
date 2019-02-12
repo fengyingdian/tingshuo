@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "play-icon": "/components/play-icon/index"
+  }
+}

@@ -1,0 +1,40 @@
+<!--pages/applyPosition/applyPosition.wxml-->
+<view class='w100-white'>
+  <view class="h20"/>
+  <view class='w80'>
+    <text class="h20"></text>
+    <text class="textGreyFont10">申请职务功能仅提供给已经通过考核并启用的同学和老师使用，如果尚未考核过相关职位请联系Joooy(微信号:go_for_dreams)进行考核。</text>
+    <text class="textGreyFont10">听说无忧，听说有你，欢迎你的加入~</text>
+    <text class="h20"></text>
+  </view>
+</view>
+<view class="w100-white">
+  <view class="h10"/>
+  <view class="w100-white" style='padding-top:0px;padding-bottom:0px;'>
+    <view class="w40"/>
+    <view class="wl60">
+      <radio-group class="radio-group" bindchange="radioChange">
+        <label class="radio" wx:for="{{items}}">
+          <radio value="{{item.name}}" checked="{{item.checked=='true'}}"/>{{item.value}}
+          <view class='h10'/>
+        </label>
+      </radio-group>
+    </view>
+  </view>
+  <view class="h10"/>
+  <view class="w100-white" style='padding-top:0px;padding-bottom:0px;'>
+    <view class="w40"/>
+    <view class="wl60">
+      <view class="input3" style='margin-top:10px;margin-bottom:15px;'>
+        <input class="" auto-focus placeholder="请输入验证码" bindinput="codeInput"/>
+      </view>
+    </view>
+  </view>
+</view>
+<view class="h20-ghostwhite"/>
+<view class='w100'>
+  <button class="itemButtonRow" bindtap='tapConfirm'>
+    <text class="textMid24"> 确定 </text>
+  </button>
+</view>
+<view class="h20-ghostwhite"/>

@@ -1,0 +1,5 @@
+<!--myComponents/canvas-time/index.wxml-->
+<view class='w100' style="background:transparent">
+  <canvas style="width:300px;height:300px;" canvas-id="secondCanvas" bindtap='onTime'></canvas>
+  <text style='font-size:24px;font-weight:900;color:#22b14c;position:relative;top:-20px;'>00:{{secondsText}}</text>
+</view>

@@ -1,0 +1,58 @@
+<!--pages/punchCard/punchCard.wxml-->
+
+<view class="h30"/>
+<block wx:if="{{showPage}}">
+  <view class="w100">
+    <view class="w80">
+      <canvas canvas-id="myCanvas" style="border: 0px solid green;box-shadow: 0px 0px 10px ghostwhite; width:{{width}}px; height:{{height}}px; border-radius:1px;background:white">
+      </canvas>
+    </view>
+  </view>
+</block>
+<block wx:else>
+  <view class='w100-white'>
+    <view style='border-bottom: 1px solid grey'>
+      <text class='textGreyFont14'>晨读内容</text>
+      <text class='h10'></text>
+    </view>
+    <view class="w90-white">
+      <view class='h10'/>
+      <text class="textFC18" selectable="true"> {{content}} </text>
+      <view class='h10'/>
+      <text class="textGreyFont10"> 温馨提示：使用过程中有任何问题请联系技术支持，微信号:fengyingdian，感谢您的支持!</text>
+      <text class='h10'></text>
+    </view>
+    <view style='border-bottom: 1px solid grey'>
+      <text class='textGreyFont14'>打卡天数</text>
+      <text class='h10'></text>
+    </view>
+    <text class='text30'>{{punchTime}}</text>
+    <text class='h10'></text>
+    <view style='border-bottom: 1px solid grey'>
+      <text class='textGreyFont14'>点评次数</text>
+      <text class='h10'></text>
+    </view>
+    <text class='text30'>{{commentTime}}</text>
+    <text class='h10'></text>
+    <view style='border-bottom: 1px solid grey'>
+      <text class='textGreyFont14'>今日练习</text>
+      <text class='h10'></text>
+    </view>
+    <text class='text30'>{{practiceSum}}</text>
+    <text class='h10'></text>
+  </view>
+</block>
+
+<view class="h20"/>
+<view class="w100">
+  <view class="wc90">
+    <view class="w50">
+      <button class="itemButtonRow textMid24 w90" bindtap='tapSave' style='height:40px;'> 保存相册      </button>
+    </view>
+    <view class="w50">
+      <button class="itemButtonRow textMid24 w90" bindtap='tapSend' style='height:40px' open-type="share"> 转发朋友 </button>
+    </view>
+  </view>
+</view>
+
+<view class="h20"/>

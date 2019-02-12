@@ -1,0 +1,33 @@
+<view class="h20-ghostwhite"/>
+<view class="w100-white">
+  <view class="itemClass">
+      <view class="wl30" style='padding-left:20px'>
+        <text class='textMid20'> 用户ID </text>
+      </view>
+      <view class="wl60">
+        <view class="input3" style='margin-top:15px;margin-bottom:15px;'>
+          <input class="" auto-focus value="{{usrId}}" placeholder="{{usrId}}" bindinput="usrIdInput" type="number"/>
+        </view>
+      </view>
+  </view>
+  <view class="h01-ghostwhite"/>
+  <view class="itemClass">
+      <view class="wl30" style='padding-left:20px'>
+        <text class='textMid20'> 充值数量 </text>
+      </view>
+      <view class="wl60">
+        <view class="input3" style='margin-top:15px;margin-bottom:15px;'>
+          <input class="" auto-focus value="{{count}}" placeholder="{{count}}" bindinput="countInput" type="number"/>
+        </view>
+      </view>
+  </view>
+  <view class="h20-ghostwhite"/>
+  <view class="w100">
+    <button class="itemButtonRow" bindtap='tapConfirm'>
+      <text class="textMid24">确定</text>
+    </button>
+  </view>
+</view>
+<view class="h20-ghostwhite"/>
+
+

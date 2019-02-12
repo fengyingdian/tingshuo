@@ -1,0 +1,9 @@
+<!--myComponents/button-home/index.wxml-->
+<view class="wc100">
+  <view class="w30" style='border:0px solid ghostwhite;' bindtap='onTap'>
+    <text style="padding-top:12px;color:white;font-size:16px;font-weight:900;"> 返回 </text>
+  </view>
+  <view class="w70" style='border:0px solid ghostwhite;background:rgb(34,177,76);' bindtap='onTap'>
+    <text style="padding-top:12px;color:white;font-size:16px;font-weight:900;"> 保存二维码 </text>
+  </view>
+</view>

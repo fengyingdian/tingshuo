@@ -1,0 +1,41 @@
+<!--pages/usrPunchList/usrPunchList.wxml-->
+<block wx:if="{{showPage}}">
+  <view wx:if="{{punches}}" class="w-white">
+    <view class="itemClass" style='height: 90px;'>
+      <view class='w30'>
+        <image class="icon-image-middle5" src="{{usrImage}}"></image>
+      </view>
+      <view class='wcl70'>
+        <text class="textMid20" style='padding-top:6px;'>累计打卡</text>
+        <text class="textGreyFont20" style='padding-left:20px'>{{punches.length}}</text>
+        <text class="textMid20" style='padding-left:20px; padding-top:6px;'>次</text>
+      </view>
+    </view>
+    <view class='h05-ghostwhite'/>
+    <view wx:for="{{punches}}" style='padding: 0 20px 0 20px'> 
+      <view class="itemClass">
+        <view class="wcl100">
+          <text class="textMid20">{{item.name}}</text>
+          <text class="textGreyFont14" style='padding-left:10px;'>{{item.punchTime}}</text>
+        </view>
+      </view>
+      <view class="itemCourse" bindtap="tapOnePunch" id="{{item.index}}" data-date="{{item.date}}" data-content="{{item.content}}" data-punchid="{{item.punchId}}" style='height:110px'>
+        <view class="w20">
+          <view class='h20'/>
+          <image class='icon-image-cover' src="https://www.abceea.com/static/class/{{item.date}}/c.jpg"/>
+          <view class='h20'/>
+        </view>
+        <view class="wl70" style='padding: 0 0 0 20px '>
+          <text class="textMid30">{{item.date}} </text>
+          <text class="textGrey60"> {{item.content}} </text>
+        </view>
+      </view>
+      <view class="h01-ghostwhite"/>
+    </view>
+  </view>
+</block>
+<block wx:else>
+  <view class="w100-white" style='height:100vh'>
+    <image class='icon-image-small3' src="/image/loading.gif" style='padding-top:40vh'/>
+  </view>
+</block>

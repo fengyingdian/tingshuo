@@ -1,0 +1,104 @@
+<!--pages/pickCourse/pickCourse.wxml-->
+
+<block wx:if="{{showType == 0}}">
+  <view class="scrollBox" style='position:fixed;top:0px;'> 
+    <scroll-view scroll-x style="width:auto; overflow:hidden;">
+      <view class="itemList4" wx:for="{{courseTitles}}" wx:for-item="item">
+        <view wx:if="{{courseTitlesSelect == index}}" class="w100-white" style="width:fit-content;">
+          <view id="{{index}}" class="w80-white" style='color:#04BE01;' bindtap='tapCourseTitle' data-data="{{item.data}}" data-title="{{item.title}}">{{item.title}}</view>
+          <view style='height:5px'/>
+          <view class='itemSelectedBottom'/>
+        </view>
+        <view wx:else class="w100-white">
+          <view id="{{index}}" class="w80-white" bindtap='tapCourseTitle' data-data="{{item.data}}" data-title="{{item.title}}">{{item.title}}</view>
+          <view style='height:2px'/>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+
+  <view class='w100-white' bindtap='tapNext' style='height:50px;position:fixed;bottom:0px;border-top:1px solid ghostwhite'>
+    <text class='textMid20' style='padding-top:14px'> 下一步 </text>
+  </view>
+
+  <view style='height: 50px'></view>
+
+  <block wx:if="{{showPage}}">
+    <view wx:if="{{courses}}" class="w-white">
+      <view class='h01-ghostwhite'/>
+      <view wx:for="{{courses}}" style='padding: 0 20px 0 20px '> 
+        <view class="itemCourse">
+          <view class="w20" bindtap="tapOneCourse" id="{{item[5]}}" data-date="{{item[1]}}" data-content="{{item[2]}}">
+            <view class='h20'/>
+            <image class='icon-image-cover' src="https://www.abceea.com/static/class/{{item[1]}}/c.jpg"/>
+            <view class='h20'/>
+          </view>
+          <view class="wl70" style='padding: 0 0 0 20px '>
+            <view class='wc100'>
+              <text class="textMid30 wl70"> {{item[1]}} </text>
+              <view class="w30" wx:if="{{item[15] == 0}}" id="{{index}}" data-id="{{item[10]}}" data-name="{{item[1]}}" data-image="{{item[3]}}" data-content="{{item[2]}}" bindtap='tapSelectCourse'>
+                <image class='icon-image-small3' src="../image/button/select1.png"/>
+              </view>
+              <view class="w30" wx:else id="{{index}}" data-id="{{item[10]}}" data-name="{{item[1]}}" data-image="{{item[3]}}" data-content="{{item[2]}}" bindtap='tapSelectCourse'>
+                <image class='icon-image-small3' src="../image/button/select2.png"/>
+              </view>
+            </view>
+            <text class="textGrey60"> {{item[2]}} </text>
+          </view>
+        </view>
+        <view class="h01-ghostwhite"/>
+      </view>
+    </view>
+    <view class="h20-ghostwhite"/>
+    <view class='w100'>
+      <view class='w80'>
+        <text class="textGreyFont14">{{bottomTips}}</text>
+        <text class="textH40"></text>
+      </view>
+    </view>
+  </block>
+  <block wx:else>
+    <view class="w100-white" style='height:100vh'>
+      <canvas-loading style="padding-top:20px" /> 
+    </view>
+  </block>
+</block>
+<block wx:else>
+  <view class='w100-white' style='height:50px;position:fixed;top:0px;border-bottom:1px solid ghostwhite'>
+    <text class='textMid20' style='padding-top:14px'> 已选课程 </text>
+  </view>
+  <view class='wc100 w-white'style='height:50px;position:fixed;top:51px;border-bottom:1px solid ghostwhite'>
+    <view class='w50' bindtap='tapPre' style='border-right:1px solid ghostwhite'>
+      <text class='textMid20'> 上一步 </text>
+    </view>
+      <view class='w50' bindtap='tapConfirm' >
+    <text class='textMid20'> 完成 </text>
+    </view>
+  </view>
+  <picker mode="date" value="{{date}}" start="2015-09-01" end="2030-09-01" bindchange="bindDateChange">
+    <view class="itemClass" style="padding:0 20px 0 20px;position:fixed;top:102px;">
+      <view class="wl80">
+        <text class="textMid20">选择发布日期：{{date}} </text>
+      </view>
+      <view class="w20">
+        <image class='icon-image-small3' src="../image/button/more.png"/>
+      </view>
+    </view>
+  </picker>
+  <view style='height: 152px'></view>
+  <view wx:if="{{selectCourse}}" class="w-white">
+    <view wx:for="{{selectCourse}}" style='padding: 0 20px 0 20px '> 
+      <view wx:if="{{item.select==1}}" class="itemClass" bindtap="tapOneCourse" id="{{item.id}}" data-date="{{item.name}}" data-content="{{item.content}}" style='height:140px'>
+        <view class="w20">
+          <view class='h20'/>
+          <image class='icon-image-cover' src="https://www.abceea.com/static/class/{{item.name}}/c.jpg"/>
+          <view class='h20'/>
+        </view>
+        <view class="wl70" style='padding: 0 0 0 20px '>
+          <text class="textMid30"> {{item.name}} </text>
+          <text class="textGrey60"> {{item.content}} </text>
+        </view>
+      </view>
+    </view>
+  </view>
+</block>

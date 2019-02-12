@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "button-home": "/myComponents/button-home/index",
+    "canvas-loading": "/myComponents/canvas-loading/index"
+  }
+}
