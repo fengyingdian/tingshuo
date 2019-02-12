@@ -1,0 +1,364 @@
+.textFit08{
+  font-weight: 900;
+  height: fit-content;
+  font-size: 8px;
+}
+
+.textFit12{
+  font-weight: 400;
+  height: fit-content;
+  font-size: 12px;
+}
+
+.textFit20{
+  font-weight: 900;
+  height: fit-content;
+  font-size: 20px;
+}
+
+.textFC08{
+  font-weight: 900;
+  height: fit-content;
+  font-size: 8px;
+  text-align: center;
+}
+
+.textFC12{
+  font-weight: 400;
+  height: fit-content;
+  font-size: 12px;
+  text-align: center;
+}
+
+.textFC16{
+  font-weight: 400;
+  height: fit-content;
+  font-size: 16px;
+  text-align: center;
+}
+
+.textFC18{
+  font-weight: 400;
+  height: fit-content;
+  font-size: 18px;
+  text-align: center;
+}
+
+.textFC20{
+  height: fit-content;
+  font-size: 20px;
+  text-align: center;
+}
+
+.text12{
+  font-weight: 900;
+  height: 12px;
+  font-size: 8px;
+}
+
+.text15{
+  font-weight: 900;
+  height: 15px;
+  font-size: 10px;
+}
+
+.text18{
+  font-weight: 900;
+  height: 18px;
+  font-size: 12px;
+}
+
+.text20{
+  font-weight: 900;
+  height: 20px;
+  font-size: 15px;
+}
+
+.text24{
+  font-weight: 900;
+  height: 24px;
+  font-size: 16px;
+}
+
+.text27{
+  font-weight: 900;
+  height: 27px;
+  font-size: 18px;
+}
+
+.text30{
+  font-weight: 900;
+  height: 30px;
+  font-size: 20px;
+}
+
+.text36{
+  font-weight: 900;
+  height: 36px;
+  font-size: 24px;
+}
+
+.text40{
+  font-weight: 900;
+  height: 40px;
+  font-size: 28px;
+}
+
+.textThin12{
+  font-weight: 200;
+  height: 12px;
+  font-size: 8px;
+}
+
+.textThin20{
+  font-weight: 200;
+  height: 20px;
+  font-size: 15px;
+}
+
+.textThin30{
+  font-weight: 200;
+  height: 30px;
+  font-size: 20px;
+}
+
+.textThin40{
+  font-weight: 200;
+  height: 40px;
+  font-size: 28px;
+}
+
+.textMid12{
+  font-weight: 400;
+  height: 12px;
+  font-size: 8px;
+}
+
+.textMid15{
+  font-weight: 400;
+  height: 15px;
+  font-size: 10px;
+}
+
+.textMid18{
+  font-weight: 400;
+  height: 18px;
+  font-size: 12px;
+}
+
+.textMid20{
+  font-weight: 400;
+  height: 20px;
+  font-size: 14px;
+}
+
+.textMid24{
+  font-weight: 400;
+  height: 24px;
+  font-size: 16px;
+}
+
+.textMid30{
+  font-weight: 400;
+  height: 30px;
+  font-size: 20px;
+}
+
+.textMid40{
+  font-weight: 400;
+  height: 40px;
+  font-size: 28px;
+}
+
+.textGreyFont10{
+  height: fit-content;
+  font-size: 10px;
+  color: gray;
+}
+
+.textGreyFont12{
+  height: fit-content;
+  font-size: 12px;
+  color: gray;
+}
+
+.textGreyFont14{
+  height: fit-content;
+  font-size: 14px;
+  color: gray;
+}
+
+.textGreyFont16{
+  height: fit-content;
+  font-size: 16px;
+  color: gray;
+}
+
+.textGreyFont18{
+  height: fit-content;
+  font-size: 18px;
+  color: gray;
+}
+
+.textGreyFont20{
+  height: fit-content;
+  font-size: 20px;
+  color: gray;
+}
+
+.textGrey12{
+  height: 12px;
+  font-size: 8px;
+  color: gray;
+}
+
+.textGrey15{
+  height: 15px;
+  font-size: 10px;
+  color: gray;
+}
+
+.textGrey18{
+  height: 18px;
+  font-size: 12px;
+  color: gray;
+}
+
+.textGrey21{
+  height: 21px;
+  font-size: 14px;
+  color: gray;
+}
+
+.textGrey24{
+  height: 24px;
+  font-size: 16px;
+  color: gray;
+}
+
+.textGrey30{
+  height: 30px;
+  font-size: 20px;
+  color: gray;
+}
+
+.textGrey60{
+  height: 60px;
+  font-size: 12px;
+  color: gray;
+  display: -webkit-box;
+  line-height: 20px;
+  word-break: break-all;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp:3;
+  overflow: hidden;
+  text-overflow:ellipsis;
+}
+
+.textGrey40{
+  height: 40px;
+  font-size: 12px;
+  color: gray;
+  display: -webkit-box;
+  line-height: 20px;
+  word-break: break-all;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp:3;
+  overflow: hidden;
+  text-overflow:ellipsis;
+}
+
+.textGrey36{
+  height: 36px;
+  font-size: 12px;
+  color: gray;
+  display: -webkit-box;
+  line-height: 18px;
+  word-break: break-all;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp:3;
+  overflow: hidden;
+  text-overflow:ellipsis;
+}
+
+.textWhite15{
+  height: 15px;
+  font-size: 10px;
+  color: white;
+}
+
+.textWhite18{
+  height: 18px;
+  font-size: 12px;
+  color: white;
+}
+
+.textWhite20{
+  font-weight: 900;
+  height: 20px;
+  font-size: 15px;
+  color: white;
+}
+
+.textWhite30{
+  font-weight: 900;
+  height: 30px;
+  font-size: 20px;
+  color: white;
+}
+
+.textWhite40{
+  font-weight: 900;
+  height: 40px;
+  font-size: 28px;
+  color: white;
+}
+
+.textH20{
+  height: 20px;
+  font-size: 12px;
+}
+
+.textH30{
+  height: 30px;
+  font-size: 18px;
+}
+
+.textH40{
+  height: 40px;
+  font-size: 24px;
+}
+
+.input{
+  width: 80%;
+  height: 35px;
+  text-align: left;
+  border: 1px solid ghostwhite;
+  border-radius: 5px;
+  padding-top: 12rpx;
+  padding-left: 20rpx;
+  padding-right: 20rpx;
+}
+
+.input2{
+  width: 90%;
+  height: 70px;
+  text-align: left;
+  border: 1px solid gray;
+  border-radius: 5px;
+  padding-top: 20px;
+  padding-left: 20rpx;
+  padding-right: 20rpx;
+}
+
+.input3{
+  width: 50%;
+  height: 30px;
+  text-align: left;
+  border: 1px solid ghostwhite;
+  border-radius: 5px;
+  padding-top: 12rpx;
+  padding-left: 20rpx;
+  padding-right: 20rpx;
+  font-size: 14px;
+}
